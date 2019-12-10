@@ -5,6 +5,7 @@ import { navbarRoute } from './layouts/navbar/navbar.route';
 import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
+import { DashBoardComponent } from './home/dash-board/dash-board.component';
 
 const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
@@ -20,6 +21,10 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
           canActivate: [UserRouteAccessService],
           loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule)
         },
+        // {
+        //   path: '',
+        //   component : DashBoardComponent
+        //   },
         {
           path: 'account',
           loadChildren: () => import('./account/account.module').then(m => m.ItaimApplicationAccountModule)

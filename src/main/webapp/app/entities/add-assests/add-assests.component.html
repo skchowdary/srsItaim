@@ -1,0 +1,54 @@
+<button type="submit" routerLink="/dashboard" class="btn btn-info">
+    &nbsp;<span> Back</span>
+</button>
+<div class="employee">
+    <form name="editForm" role="form" (ngSubmit)="f.form.valid && save();">
+
+        <h2 class="jhi-professional-heading">ADD ASSET</h2>
+
+        <div class="row">
+            <div class="col-md-3 col-xs-12">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_assetType">Asset Type</label>
+                    <select class="form-control" id="field_assetType" name="assetType" maxlength="255" required>
+                        <!-- <option [value]="entry.id" *ngFor='let entry of empTypeList'>{{entry.name}}</option>
+                    </select>
+                    <div *ngIf="f.submitted && empType.invalid" class="invalid-feedback">
+                        <div *ngIf="empType.errors.required">Field is required</div>
+                    </div> -->
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_serialNumber">Serial Number</label>
+                    <input type="text" class="form-control" name="serialNumber" maxlength="255"
+                        id="field_serialNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modelNumber">Model Number</label>
+                    <input type="text" class="form-control" name="modelNumber" maxlength="255" id="field_modelNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_manufacturer">Manufacturer</label>
+                    <select class="form-control" id="field_manufacturer" name="manufacturer" maxlength="255" required>
+                        <!-- <div *ngIf="f.submitted && fullName.invalid" class="invalid-feedback">
+                        <div *ngIf="fullName.errors.required">Field is required</div>
+                    </div> -->
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_procurementDate">Procurement Date</label>
+                    <div class="input-group">
+                        <input id="field_procurementDate" type="date" class="form-control" placeholder="yyyy-mm-dd" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btnemp">
+            <button type="submit" id="save-entity" class="btn btnStyle btn-primary">
+                &nbsp;<span>Save</span>
+            </button>
+            <button type="button" id="cancel-save" class="btn btnStyle btn-secondary" (click)="previousState()">
+                &nbsp;<span>Cancel</span>
+            </button>
+        </div>
+    </form>
+</div>
