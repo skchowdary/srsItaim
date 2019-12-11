@@ -1,38 +1,28 @@
-<div class="flex-container">
+<div class="container-fluid mt--9 mb-5">
     <div class="header heading chartbox">
-        <h2>Dashboard</h2>
+      <h2>Dashboard</h2>
     </div>
     <div class="row">
-        <div class="col-md-4 col-xs-12">
-            
-
-
-            <button id="jh-create-entity" class="button btn-primary" [routerLink]="['/addassets']">
-                <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
-                <span class="hidden-sm-down">ADD ASSET</span>
-            </button>
-
-            <button id="jh-create-entity" class="button btn-primary" [routerLink]="['/addemployee']">
-                <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
-                <span class="hidden-sm-down">ADD EMPLOYEE</span>
-            </button>
-            <button id="jh-create-entity" class="button btn-primary" [routerLink]="['/addclient']">
-                <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
-                <span class="hidden-sm-down">ADD CLIENT</span>
-            </button>
-            <button id="jh-create-entity" class="button btn-primary" [routerLink]="['/assignasset']">
-                <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
-                <span class="hidden-sm-down">ASSIGN ASSET</span>
-            </button>
-
-            <button  class="button btn-primary"
-                [routerLink]="['/reports']">REPORTS</button>
-            <button class="button btn-primary"
-                [routerLink]="['/releaseasset']">RELEASE ASSET</button>
-
-            
-
-            
-        </div>
+      <div class="col-md-4 col-xs-12">
+        <button class="button btn-primary" [routerLink]="['/assignasset']">Assign Asset</button>
+  
+        <button id="jh-create-entity" class="button btn-primary" [routerLink]="['/addassets']">
+          <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
+          <span class="hidden-sm-down">Add Asset</span>
+        </button>
+  
+        <button class="button btn-primary" [routerLink]="['/reports']">REPORTS</button>
+        <button class="button btn-primary" [routerLink]="['/releaseasset']">RELEASE ASSET</button>
+  
+        <button id="jh-create-entity" class="button btn-primary" [routerLink]="['/addemployee']">
+          <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
+          <span class="hidden-sm-down">Add Employee</span>
+        </button>
+  
+        <button id="jh-create-entity" class="button btn-primary" [routerLink]="['/addclient']">
+          <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
+          <span class="hidden-sm-down">Add Client</span>
+        </button>
+      </div>
     </div>
-</div>
+  </div>

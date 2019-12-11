@@ -180,3 +180,15 @@ ui bootstrap tweaks
 }
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+body {
+  background: #fff !important;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40 !important;
+  color: white;
+  text-align: center;
+}

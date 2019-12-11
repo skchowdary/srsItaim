@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
 
-import { ReleaseAssestComponent } from './release-assest.component';
+import { ReleaseAssetComponent } from './release-asset.component';
 
 export const RELEASEASSET_ROUTE: Route = {
   path: 'releaseasset',
-  component: ReleaseAssestComponent,
+  component: ReleaseAssetComponent,
   data: {
     authorities: [],
     pageTitle: 'Release Asset'

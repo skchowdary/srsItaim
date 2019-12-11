@@ -1,0 +1,80 @@
+<div class="container-fluid mt--9 mb-5">
+    <div class="card">
+        <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+                <button class="btn btn-primary" [routerLink]="['/dashboard']">Back</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form name="editForm" role="form" (ngSubmit)="f.form.valid && save()" #f="ngForm">
+                        <div *ngIf="!id">
+                            <h2 class="jhi-professional-heading">ADD ASSET</h2>
+                        </div>
+                        <div *ngIf="id">
+                            <h2 class="jhi-professional-heading">Update Asset</h2>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Asset Type</label>
+                            <select name="assetType" class="form-control" [(ngModel)]="addAsset.assetType"
+                                #assetType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assetType.invalid }">
+                                <option *ngFor="let assetType of assetTypes" value={{assetType.name}}>
+                                    {{assetType.name}}
+                                </option>
+                                <div *ngIf="f.submitted && assetType.invalid" class="invalid-feedback">
+                                    <div *ngIf="assetType.errors.required">This field is required</div>
+                                </div>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="serialNumber">Serial Number</label>
+                            <input type="text" class="form-control" name="serialNumber"
+                                [(ngModel)]="addAsset.serialNumber" #serialNumber="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }" required />
+                            <div *ngIf="f.submitted && serialNumber.invalid" class="invalid-feedback">
+                                <div *ngIf="serialNumber.errors.required">This field is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="modelNumber">Model Number</label>
+                            <input type="text" class="form-control" name="modelNumber"
+                                [(ngModel)]="addAsset.modelNumber" #modelNumber="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && modelNumber.invalid }" required />
+                            <div *ngIf="f.submitted && modelNumber.invalid" class="invalid-feedback">
+                                <div *ngIf="modelNumber.errors.required">This field is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="manufacture">Manufacture</label>
+                            <input type="text" class="form-control" name="manufacture"
+                                [(ngModel)]="addAsset.manufacture" #manufacture="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && manufacture.invalid }" required />
+                            <div *ngIf="f.submitted && manufacture.invalid" class="invalid-feedback">
+                                <div *ngIf="manufacture.errors.required">This field is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="procurementDate">Procurement Date</label>
+                            <input type="date" class="form-control" name="procurementDate"
+                                [(ngModel)]="addAsset.procurementDate" #procurementDate="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && procurementDate.invalid }" required />
+                            <div *ngIf="f.submitted && procurementDate.invalid" class="invalid-feedback">
+                                <div *ngIf="procurementDate.errors.required">This field is required</div>
+                            </div>
+                        </div>
+                        <div class="btnemp">
+                            <button type="submit" id="save-entity" class="btn btn-primary text-center">
+                                Save
+                            </button>
+                            <button type="button" class="btn btnStyle btn-secondary" (click)="reset()">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,28 +1,32 @@
-<button type="submit" routerLink="/dashboard" class="btn btn-info">&nbsp;<span> Back</span>
-</button>
-<div class="employee">
-    <form name="editForm" role="form" (ngSubmit)="f.form.valid && save();">
-        <h2 class="jhi-professional-heading">ADD CLIENT</h2>
-        <!-- <h2 class="jhi-professional-heading">Update Employee</h2> -->
-        <div class="row">
-            <div class="col-md-3 col-xs-12">
-
-                <div class="form-group">
-                    <label class="form-control-label" for="field_clientName">Client Name</label>
-                    <input type="text" class="form-control" name="clientName" id="field_clientName" maxlength="255"
-                        required />
+<div class="container-fluid mt--9 mb-5">
+    <div class="card">
+        <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+                <button class="btn btn-primary" [routerLink]="['/dashboard']">Back</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                        <h2>ADD CLIENT</h2>
+                        <div class="form-group">
+                            <label for="clientName">Client Name</label>
+                            <input type="text" class="form-control" name="clientName" [(ngModel)]="addClient.clientName"
+                                #clientName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clientName.invalid }" required />
+                            <div *ngIf="f.submitted && clientName.invalid" class="invalid-feedback">
+                                <div *ngIf="clientName.errors.required">This field is required</div>
+                            </div>
+                        </div>
+                        <div class="submitButton">
+                            <button type="submit" class="btn btn-primary text-center">Save</button>
+                            <button type="button" class="btn btnStyle btn-secondary" (click)="reset()">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-</div>
-
-<div class="btnemp">
-    <button type="submit" id="save-entity" class="btn btnStyle btn-primary">
-        &nbsp;<span>Save</span>
-    </button>
-    <button type="button" id="cancel-save" class="btn btnStyle btn-secondary" (click)="previousState()">
-        &nbsp;<span>Cancel</span>
-    </button>
-</div>
-</form>
+    </div>
 </div>

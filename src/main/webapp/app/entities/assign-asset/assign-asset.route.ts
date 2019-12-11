@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
 
-import { AssignAssestComponent } from './assign-assest.component';
+import { AssignAssetComponent } from './assign-asset.component';
 
 export const ASSIGNASSET_ROUTE: Route = {
   path: 'assignasset',
-  component: AssignAssestComponent,
+  component: AssignAssetComponent,
   data: {
     authorities: [],
     pageTitle: 'Assign Assets'
