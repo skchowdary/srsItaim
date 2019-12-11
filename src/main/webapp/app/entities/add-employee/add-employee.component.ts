@@ -1,3 +1,5 @@
+import { IAddEmployee } from './add-employee.model';
+import { AssetInventoryService } from './../assetinventory.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-employee.component.scss']
 })
 export class AddEmployeeComponent implements OnInit {
-  constructor() {}
+  addEmployee: IAddEmployee;
+  constructor(private service: AssetInventoryService) {}
 
   ngOnInit() {}
+  onSubmit() {
+    this.service.createEmployee(this.addEmployee).subscribe(res => {
+      this.addEmployee = res.body;
+    });
+  }
 }

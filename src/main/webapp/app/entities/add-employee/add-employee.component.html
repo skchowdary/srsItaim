@@ -8,7 +8,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <form name="form" (ngSubmit)="f.form.valid && onSave()" #f="ngForm" novalidate>
                         <h2>ADD EMPLOYEE</h2>
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -20,7 +20,7 @@
                         </div>
                         <div class="form-group">
                             <label for="phoneNum">Phone No</label>
-                            <input type="number" class="form-control" name="phoneNum" [(ngModel)]="addEmployee.phoneNum"
+                            <input type="text" class="form-control" name="phoneNum" [(ngModel)]="addEmployee.phoneNum"
                                 #phoneNum="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phoneNum.invalid }"
                                 required />
                             <div *ngIf="f.submitted && phoneNum.invalid" class="invalid-feedback">

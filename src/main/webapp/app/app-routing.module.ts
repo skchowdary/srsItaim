@@ -5,7 +5,6 @@ import { navbarRoute } from './layouts/navbar/navbar.route';
 import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { DashBoardComponent } from './home/dash-board/dash-board.component';
 
 const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
