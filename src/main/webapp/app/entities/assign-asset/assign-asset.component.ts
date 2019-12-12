@@ -1,6 +1,6 @@
 import { IAddAsset } from './../add-asset/add-asset.model';
 import { IAddEmployee } from './../add-employee/add-employee.model';
-import { IAssignAsset } from './assign-asset.model';
+import { IAssignAsset, AssignAsset } from './assign-asset.model';
 import { Component, OnInit } from '@angular/core';
 import { AssetInventoryService } from '../assetinventory.service';
 
@@ -16,6 +16,7 @@ export class AssignAssetComponent implements OnInit {
   constructor(private service: AssetInventoryService) {}
 
   ngOnInit() {
+    this.assignAsset = new AssignAsset();
     this.getEmpList();
     this.getSerialNoList();
   }
@@ -30,8 +31,6 @@ export class AssignAssetComponent implements OnInit {
       // eslint-disable-next-line no-console
       console.log('response ' + data.body);
       this.employeeName = data.body;
-      // eslint-disable-next-line no-console
-      console.log('length ' + this.employeeName.length);
     });
   }
   private getSerialNoList() {

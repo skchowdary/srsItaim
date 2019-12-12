@@ -12,7 +12,7 @@ export class AddEmployeeComponent implements OnInit {
   constructor(private service: AssetInventoryService) {}
 
   ngOnInit() {}
-  onSubmit() {
+  onSave() {
     this.service.createEmployee(this.addEmployee).subscribe(res => {
       this.addEmployee = res.body;
     });

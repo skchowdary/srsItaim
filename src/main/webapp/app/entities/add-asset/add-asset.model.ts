@@ -5,7 +5,7 @@ export interface IAddAsset {
   assetType?: String;
   serialNumber?: String;
   modelNumber?: String;
-  manufacture?: String;
+  manufacturer?: String;
   procurementDate?: Moment;
 }
 

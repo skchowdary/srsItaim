@@ -1,10 +1,10 @@
 import { Moment } from 'moment';
 
-export interface IAddClient {
+export interface IClient {
   id?: number;
   clientName?: String;
 }
 
-export class AddClient implements IAddClient {
+export class Client implements IClient {
   constructor(public id?: number, public clientName?: String) {}
 }

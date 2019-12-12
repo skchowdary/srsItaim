@@ -1,6 +1,7 @@
-import { IAddClient } from './add-client.model';
+import { IClient, Client } from './add-client.model';
 import { Component, OnInit } from '@angular/core';
 import { AssetInventoryService } from '../assetinventory.service';
+import { tsExpressionWithTypeArguments } from '@babel/types';
 
 @Component({
   selector: 'jhi-add-client',
@@ -8,13 +9,20 @@ import { AssetInventoryService } from '../assetinventory.service';
   styleUrls: ['./add-client.component.scss']
 })
 export class AddClientComponent implements OnInit {
-  addClient: IAddClient;
+  addClient: IClient;
   constructor(private service: AssetInventoryService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.addClient = new Client();
+  }
   onSubmit() {
     this.service.createClient(this.addClient).subscribe(res => {
+      // eslint-disable-next-line no-console
+      console.log(this.addClient);
       this.addClient = res.body;
     });
+  }
+  reset() {
+    this.addClient.clientName = null;
   }
 }
