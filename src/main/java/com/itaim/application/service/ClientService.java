@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.itaim.application.domain.Client;
 
-public interface CLientService
+public interface ClientService
 {
 	public String saveClient(Client client);
 	public List<Client> getAllClients();

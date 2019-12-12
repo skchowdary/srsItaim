@@ -1,4 +1,4 @@
-package com.itaim.application.controller;
+package com.itaim.appplication.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.itaim.application.domain.AssetList;
 import com.itaim.application.serviceImpl.AssetListServiceImpl;
+
 @RestController
 public class AssetListController {
 
@@ -26,6 +27,7 @@ public class AssetListController {
 
 	@RequestMapping(value = "/getAssetlist", method = RequestMethod.GET)
 	public List<AssetList> getAllAssetList() {
+		System.out.println("find All assetTypes");
 		return assetListService.getAllAssetType();
 	}
 
@@ -45,7 +47,5 @@ public class AssetListController {
 	public String deleteAssetById(@PathVariable int id) {
 		assetListService.DeleteAssetById(id);
 		return "Asset Delete successfully by its Id";
-
 	}
-
 }

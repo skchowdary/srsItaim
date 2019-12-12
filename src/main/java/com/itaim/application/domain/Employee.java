@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Employees")
+@Table(name = "employee")
 public class Employee implements Serializable 
 {
 	private static final long serialVersionUID = 1L;
@@ -27,10 +27,10 @@ public class Employee implements Serializable
 	@Column(name = "name", nullable = false)
 	private String name;
 	
-	@Column(name = "email-Id", nullable = false)
+	@Column(name = "email", nullable = false)
 	private String email;
 	
-	@Column(name = "phone_No" , nullable = false)
+	@Column(name = "phone" , nullable = false)
 	private long phone;
 	
 	@Column(name = "address" , nullable = false)

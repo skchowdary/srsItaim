@@ -12,10 +12,11 @@
    
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/2019654321_added_entity_AddAssests.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/2019654322_added_entity_AssignAssest.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/2019654323_added_entity_Employees.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/2019654324_added_entity_Clients.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/2019654321_added_entity_AddAsset.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/2019654322_added_entity_AssignAsset.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/2019654323_added_entity_Employee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/2019654324_added_entity_Client.xml" relativeToChangelogFile="false"/>
+       <include file="config/liquibase/changelog/2019654325_added_entity_AssetList.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

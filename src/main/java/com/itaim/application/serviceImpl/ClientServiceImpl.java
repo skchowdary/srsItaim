@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.itaim.application.domain.Client;
 import com.itaim.application.repository.ClientRepository;
-import com.itaim.application.service.CLientService;
+import com.itaim.application.service.ClientService;
 
 @Service
-public class ClientServiceImpl implements CLientService 
+public class ClientServiceImpl implements ClientService 
 {
 	@Autowired
 	ClientRepository clientRepository;

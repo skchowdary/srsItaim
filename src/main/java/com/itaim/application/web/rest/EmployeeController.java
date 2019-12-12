@@ -19,32 +19,33 @@ public class EmployeeController
 	@Autowired
 	EmployeeServiceImpl employeeService;
 	
-	@RequestMapping(value = "/save", method=RequestMethod.POST)
+	@RequestMapping(value = "/employee/save", method=RequestMethod.POST)
 	public String saveEmployee(@RequestBody Employee employee) 
 	{ 
 		employeeService.saveEmployee(employee);
 		return "Success";
 	}
 	 
-	@RequestMapping(value = "/getEmp", method=RequestMethod.GET)
+	@RequestMapping(value = "/employee/getAll", method=RequestMethod.GET)
 	public List<Employee> getEmployee() 
 	{
+		System.out.println("find all employees");
 		return employeeService.getEmployee();
 	}
 
-	@RequestMapping(value = "/emp/{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "/employee/{id}", method=RequestMethod.GET)
 	public Optional<Employee> getEmployeeById(@PathVariable int id) 
 	{
 		 return employeeService.getEmployeeById(id);
 	}
 	  
-	@RequestMapping(value = "/updateEmp/{id}",  method=RequestMethod.PUT)
+	@RequestMapping(value = "/employee/{id}",  method=RequestMethod.PUT)
 	public Employee updateEmployee(@RequestBody Employee employee, @PathVariable int id)
 	{
 		return employeeService.updateEmployee(employee);	
 	}
 	  
-	@RequestMapping(value = "/deleteEmp/{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value = "/employee/{id}", method=RequestMethod.DELETE)
 	public String deleteEmployee(@PathVariable int id) 
 	{
 		employeeService.deleteEmployee(id);

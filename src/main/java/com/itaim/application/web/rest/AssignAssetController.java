@@ -19,20 +19,20 @@ public class AssignAssetController
 	@Autowired
 	AssignAssetServiceImpl service;
 
-	@RequestMapping(value = "/asset/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/assignAsset/save", method = RequestMethod.POST)
 	public String save(@RequestBody AssignAsset asset)
 	{
 		service.saveAssignedAsset(asset);
 		return "Assets are Assigned and saved";
 	}
 
-	@RequestMapping(value = "/asset/all", method = RequestMethod.GET)
+	@RequestMapping(value = "/assignAsset/getAll", method = RequestMethod.GET)
 	public List<AssignAsset> getAssignedAsset()
 	{
 		return service.getAssignedAsset();
 	}
 
-	@RequestMapping(value = "/asset/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/assignAsset/{id}", method = RequestMethod.GET)
 	public AssignAsset getAssetById(@PathVariable int id) throws Exception 
 	{
 		Optional<AssignAsset> asset = service.getAssetById(id);
@@ -41,7 +41,7 @@ public class AssignAssetController
 		return asset.get();
 	}
 
-	@RequestMapping(value = "/asset/update/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/assignAsset/update/{id}", method = RequestMethod.PUT)
 	public AssignAsset update(@RequestBody AssignAsset updasset, @PathVariable int id) throws Exception 
 	{
 		Optional<AssignAsset> asset = service.getAssetById(id);
@@ -52,7 +52,7 @@ public class AssignAssetController
 		return service.updateAssignAsset(updasset);
 	}
 
-	@RequestMapping(value = "/asset/delete/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/assignAsset/delete/{id}", method = RequestMethod.DELETE)
 	public String deleteAssetById(@PathVariable int id) throws Exception 
 	{
 		Optional<AssignAsset> asset = service.getAssetById(id);

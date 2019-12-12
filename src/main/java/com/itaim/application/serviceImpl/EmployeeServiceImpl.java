@@ -7,20 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itaim.application.domain.Employee;
-import com.itaim.application.repository.EmployeeREpository;
+
+import com.itaim.application.repository.EmployeeRepository;
 import com.itaim.application.service.EmployeeService;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService
 {
 	@Autowired
-	EmployeeREpository employeerepository;
+	EmployeeRepository employeerepository;
 	
 	public String saveEmployee(Employee employee)
 	{   
 		employeerepository.save(employee);
-		return "The employee has been saved successfully.";
-		
+		return "The employee has been saved successfully.";		
 	}
 
 	public List<Employee> getEmployee() 

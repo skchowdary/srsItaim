@@ -16,19 +16,19 @@ export class AssetInventoryService {
   constructor(private http: HttpClient) {}
 
   createAssignAsset(assign: AssignAsset): Observable<HttpResponse<AssignAsset>> {
-    return this.http.post<AssignAsset>(this.resourceUrl + '/asset/save', assign, { observe: 'response' });
+    return this.http.post<AssignAsset>(this.resourceUrl + '/assignAsset/save', assign, { observe: 'response' });
   }
 
   update(assign: AssignAsset): Observable<HttpResponse<AssignAsset>> {
-    return this.http.put<AssignAsset>(this.resourceUrl + '/asset/update', assign, { observe: 'response' });
+    return this.http.put<AssignAsset>(this.resourceUrl + '/assignAsset/update', assign, { observe: 'response' });
   }
 
   findAllAssignAsset(): Observable<HttpResponse<IAssignAsset[]>> {
-    return this.http.get<IAssignAsset[]>(this.resourceUrl + '/asset/all', { observe: 'response' });
+    return this.http.get<IAssignAsset[]>(this.resourceUrl + '/assignAsset/getAll', { observe: 'response' });
   }
 
   delete(id: string): Observable<HttpResponse<any>> {
-    return this.http.delete(`${'/asset/delete'}/${id}`, { observe: 'response' });
+    return this.http.delete(`${'/assignAsset/delete'}/${id}`, { observe: 'response' });
   }
 
   createAddAsset(asset: AddAsset): Observable<HttpResponse<AddAsset>> {
@@ -40,22 +40,22 @@ export class AssetInventoryService {
   }
 
   createEmployee(employee: AddEmployee): Observable<HttpResponse<AddEmployee>> {
-    return this.http.post<AddEmployee>(this.resourceUrl + '/save', employee, { observe: 'response' });
+    return this.http.post<AddEmployee>(this.resourceUrl + '/employee/save', employee, { observe: 'response' });
   }
 
   findAllEmployee(): Observable<HttpResponse<IAddEmployee[]>> {
-    return this.http.get<IAddEmployee[]>(this.resourceUrl + '/getEmp', { observe: 'response' });
+    return this.http.get<IAddEmployee[]>(this.resourceUrl + '/employee/getAll', { observe: 'response' });
   }
 
   createClient(client: IClient): Observable<HttpResponse<IClient>> {
-    return this.http.post<IClient>(this.resourceUrl + '/saveClient', client, { observe: 'response' });
+    return this.http.post<IClient>(this.resourceUrl + '/client/save', client, { observe: 'response' });
   }
 
   findAllClient(): Observable<HttpResponse<IClient[]>> {
-    return this.http.get<IClient[]>(this.resourceUrl + '/getAll', { observe: 'response' });
+    return this.http.get<IClient[]>(this.resourceUrl + 'client/getAll', { observe: 'response' });
   }
 
   findAllAssetType(): Observable<HttpResponse<IAssetList[]>> {
-    return this.http.get<IAssetList[]>(this.resourceUrl + '/getAssetlist', { observe: 'response' });
+    return this.http.get<IAssetList[]>(this.resourceUrl + '/assetList/getAll', { observe: 'response' });
   }
 }

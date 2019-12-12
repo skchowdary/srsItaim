@@ -8,34 +8,18 @@
 
     <property name="autoIncrement" value="true"/>
 
- <!-- Added the entity AddAssests -->
-    <changeSet id="20196543211" author="jhipster">
-        <createTable tableName="AddAssests">
+    <!-- Added the entity Clients. -->
+    <changeSet id="2019654324" author="jhipster">
+        <createTable tableName="asset_list" >
         
             <column name="id" type="int" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             
-            <column name="Assest_Type" type="varchar(50)">
+            <column name="asset_name" type="varchar(90)">
                 <constraints nullable="false" />
             </column>
-            
-            <column name="Serial_Number" type="varchar(90)">
-            	<constraints nullable="false" />
-            </column>
-            
-            <column name="Model_Number" type="varchar(90)">
-            	<constraints nullable="false" />
-            </column>
-            
-            <column name="Manufacture" type="varchar(90)">
-            	<constraints nullable="false" />
-            </column>
-            
-            <column name="Procurement_Date" type="Date">
-            	<constraints nullable="false" />
-            </column>
-            
+   
         </createTable>
-	</changeSet>
+    </changeSet>
 </databaseChangeLog>

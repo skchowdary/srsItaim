@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="AssignAsset")
+@Table(name="assign_asset")
 public class AssignAsset implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -23,19 +23,19 @@ public class AssignAsset implements Serializable
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Id")
+	@Column(name="id")
 	private int id;
 	
-	@Column(name="Asset_Type", nullable = false)
+	@Column(name="asset_type", nullable = false)
 	private String assetType;
 	
-	@Column(name="Serial_Number", nullable = false)
+	@Column(name="serial_number", nullable = false)
 	private String serialNumber;
 	
-	@Column(name="Assign_To", nullable = false)
+	@Column(name="assign_to", nullable = false)
 	private  String assignTo;
 	
-	@Column(name="Assignment_Date",nullable = false)
+	@Column(name="assignment_date",nullable = false)
 	private Date assignmentDate;
 	
 	public AssignAsset()

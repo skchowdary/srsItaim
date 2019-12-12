@@ -8,32 +8,16 @@
 
     <property name="autoIncrement" value="true"/>
 
-    <!-- Added the entity Employees. -->
-    <changeSet id="2019654323" author="jhipster">
-        <createTable tableName="Employees" >
+    <!-- Added the entity Clients. -->
+    <changeSet id="2019654324" author="jhipster">
+        <createTable tableName="client" >
         
             <column name="id" type="int" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             
-            <column name="name" type="varchar(90)">
+            <column name="client_name" type="varchar(90)">
                 <constraints nullable="false" />
-            </column>
-            
-            <column name="email-Id" type="varchar(90)">
-            	<constraints nullable="false" />
-            </column>
-            
-            <column name="phone_No" type="long">
-            	<constraints nullable="false" />
-            </column>
-            
-            <column name="address" type="varchar(250)">
-            	<constraints nullable="false" />
-            </column>
-            
-            <column name="clientName" type="varchar(90)">
-            	<constraints nullable="false" />
             </column>
             
         </createTable>
