@@ -19,15 +19,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="phoneNum">Phone No</label>
-                            <input type="text" class="form-control" name="phoneNum" [(ngModel)]="addEmployee.phoneNum"
-                                #phoneNum="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phoneNum.invalid }"
-                                required />
-                            <div *ngIf="f.submitted && phoneNum.invalid" class="invalid-feedback">
-                                <div *ngIf="phoneNum.errors.required">This field is required</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="email">Email</label>
                             <input class="form-control" name="email" [(ngModel)]="addEmployee.email" type="email"
                                 #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required>
@@ -36,10 +27,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="phone">Phone No</label>
+                            <input type="text" class="form-control" name="phone" [(ngModel)]="addEmployee.phone"
+                                #phoneNum="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
+                                required />
+                            <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+                                <div *ngIf="phone.errors.required">This field is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="address">Address</label>
-                            <input class="form-control" name="address" [(ngModel)]="addEmployee.address" type="text"
-                                #address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }"
-                                required>
+                            <textarea class="form-control" name="address" rows="3" cols="5"
+                                [(ngModel)]="addEmployee.address" #address="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" style="resize: none"
+                                required></textarea>
                             <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
                                 <div *ngIf="address.errors.required">This field is required</div>
                             </div>

@@ -14,8 +14,8 @@
                             <label for="assetType">Asset Type:</label>
                             <select name="assetType" class="form-control" [(ngModel)]="assignAsset.assetType"
                                 #assetType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assetType.invalid }">
-                                <option *ngFor="let assetType of assetTypes" value={{assetType.name}}>
-                                    {{assetType.name}}
+                                <option *ngFor="let types of assetTypes" [value]='types.assetType'>
+                                    {{types.assetType}}
                                 </option>
                                 <div *ngIf="f.submitted && assetType.invalid" class="invalid-feedback">
                                     <div *ngIf="assetType.errors.required">This field is required</div>
@@ -24,21 +24,27 @@
                         </div>
                         <div class="form-group">
                             <label for="serialNumber">Serial No</label>
-                            <input type="text" class="form-control" name="serialNumber" [(ngModel)]="assignAsset.serialNumber"
-                                #assignTo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }"
-                                required />
+                            <select name="serialNumber" class="form-control" [(ngModel)]="assignAsset.serialNumber"
+                            #serialNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }">
+                            <option *ngFor="let serialNo of serialNoLists" [value]='serialNo.serialNumber'>
+                                {{serialNo.serialNumber}}
+                            </option>
                             <div *ngIf="f.submitted && serialNumber.invalid" class="invalid-feedback">
                                 <div *ngIf="serialNumber.errors.required">This field is required</div>
                             </div>
+                        </select>
                         </div>
                         <div class="form-group">
-                            <label for="assignTo">Assign To</label>
-                            <input type="text" class="form-control" name="assignTo" [(ngModel)]="assignAsset.assignTo"
-                                #assignTo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assignTo.invalid }"
-                                required />
-                            <div *ngIf="f.submitted && assignTo.invalid" class="invalid-feedback">
-                                <div *ngIf="assignTo.errors.required">This field is required</div>
-                            </div>
+                            <label for="assignTo">Assign To:</label>
+                            <select name="assignTo" class="form-control" [(ngModel)]="assignAsset.assignTo"
+                                #assignTo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assignTo.invalid }">
+                                <option *ngFor="let emp of this.employeeName" [value]='emp.name'>
+                                    {{emp.name}}
+                                </option>
+                                <div *ngIf="f.submitted && assignTo.invalid" class="invalid-feedback">
+                                    <div *ngIf="assignTo.errors.required">This field is required</div>
+                                </div>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="assignmentDate">Assignment Date</label>

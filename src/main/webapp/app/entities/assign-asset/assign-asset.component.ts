@@ -1,3 +1,4 @@
+import { IAddAsset } from './../add-asset/add-asset.model';
 import { IAddEmployee } from './../add-employee/add-employee.model';
 import { IAssignAsset } from './assign-asset.model';
 import { Component, OnInit } from '@angular/core';
@@ -11,12 +12,12 @@ import { AssetInventoryService } from '../assetinventory.service';
 export class AssignAssetComponent implements OnInit {
   assignAsset: IAssignAsset;
   employeeName: IAddEmployee[] = [];
+  serialNoLists: IAddAsset[] = [];
   constructor(private service: AssetInventoryService) {}
 
   ngOnInit() {
-    // eslint-disable-next-line no-console
-    console.log('nagendra ngOnInit');
     this.getEmpList();
+    this.getSerialNoList();
   }
 
   onSubmit() {
@@ -27,10 +28,15 @@ export class AssignAssetComponent implements OnInit {
   private getEmpList() {
     this.service.findAllEmployee().subscribe(data => {
       // eslint-disable-next-line no-console
-      console.log('nagendra response ' + data.body);
+      console.log('response ' + data.body);
       this.employeeName = data.body;
       // eslint-disable-next-line no-console
-      console.log('nagendra length ' + this.employeeName.length);
+      console.log('length ' + this.employeeName.length);
+    });
+  }
+  private getSerialNoList() {
+    this.service.findAllAddAsset().subscribe(data => {
+      this.serialNoLists = data.body;
     });
   }
 }

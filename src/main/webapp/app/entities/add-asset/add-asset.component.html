@@ -47,12 +47,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="manufacture">Manufacture</label>
-                            <input type="text" class="form-control" name="manufacture"
-                                [(ngModel)]="addAsset.manufacture" #manufacture="ngModel"
-                                [ngClass]="{ 'is-invalid': f.submitted && manufacture.invalid }" required />
-                            <div *ngIf="f.submitted && manufacture.invalid" class="invalid-feedback">
-                                <div *ngIf="manufacture.errors.required">This field is required</div>
+                            <label for="manufacturer">Manufacturer</label>
+                            <input type="text" class="form-control" name="manufacturer"
+                                [(ngModel)]="addAsset.manufacturer" #manufacturer="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && manufacturer.invalid }" required />
+                            <div *ngIf="f.submitted && manufacturer.invalid" class="invalid-feedback">
+                                <div *ngIf="manufacturer.errors.required">This field is required</div>
                             </div>
                         </div>
                         <div class="form-group">
