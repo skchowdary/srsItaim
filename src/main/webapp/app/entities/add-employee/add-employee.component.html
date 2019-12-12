@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label for="phone">Phone No</label>
                             <input type="text" class="form-control" name="phone" [(ngModel)]="addEmployee.phone"
-                                #phoneNum="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
+                                #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
                                 required />
                             <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
                                 <div *ngIf="phone.errors.required">This field is required</div>

@@ -13,9 +13,9 @@
                         <div class="form-group">
                             <label for="assetType">Asset Type:</label>
                             <select name="assetType" class="form-control" [(ngModel)]="assignAsset.assetType"
-                                #assetType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assetType.invalid }">
-                                <option *ngFor="let types of assetTypes" [value]='types.assetType'>
-                                    {{types.assetType}}
+                                #assetType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assetType.invalid }" required>
+                                <option *ngFor="let types of assetLists" [value]='types.assetName'>
+                                    {{types.assetName}}
                                 </option>
                                 <div *ngIf="f.submitted && assetType.invalid" class="invalid-feedback">
                                     <div *ngIf="assetType.errors.required">This field is required</div>
@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label for="serialNumber">Serial No</label>
                             <select name="serialNumber" class="form-control" [(ngModel)]="assignAsset.serialNumber"
-                            #serialNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }">
+                            #serialNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }" required>
                             <option *ngFor="let serialNo of serialNoLists" [value]='serialNo.serialNumber'>
                                 {{serialNo.serialNumber}}
                             </option>
@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <label for="assignTo">Assign To:</label>
                             <select name="assignTo" class="form-control" [(ngModel)]="assignAsset.assignTo"
-                                #assignTo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assignTo.invalid }">
+                                #assignTo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assignTo.invalid }" required>
                                 <option *ngFor="let emp of this.employeeName" [value]='emp.name'>
                                     {{emp.name}}
                                 </option>

@@ -3,6 +3,7 @@ import { IAddEmployee } from './../add-employee/add-employee.model';
 import { IAssignAsset, AssignAsset } from './assign-asset.model';
 import { Component, OnInit } from '@angular/core';
 import { AssetInventoryService } from '../assetinventory.service';
+import { IAssetList } from '../asset-type.module';
 
 @Component({
   selector: 'jhi-assign-asset',
@@ -12,6 +13,7 @@ import { AssetInventoryService } from '../assetinventory.service';
 export class AssignAssetComponent implements OnInit {
   assignAsset: IAssignAsset;
   employeeName: IAddEmployee[] = [];
+  assetLists: IAssetList[] = [];
   serialNoLists: IAddAsset[] = [];
   constructor(private service: AssetInventoryService) {}
 
@@ -19,6 +21,7 @@ export class AssignAssetComponent implements OnInit {
     this.assignAsset = new AssignAsset();
     this.getEmpList();
     this.getSerialNoList();
+    this.getAssetType();
   }
 
   onSubmit() {
@@ -28,14 +31,19 @@ export class AssignAssetComponent implements OnInit {
   }
   private getEmpList() {
     this.service.findAllEmployee().subscribe(data => {
-      // eslint-disable-next-line no-console
-      console.log('response ' + data.body);
       this.employeeName = data.body;
     });
   }
   private getSerialNoList() {
     this.service.findAllAddAsset().subscribe(data => {
       this.serialNoLists = data.body;
+    });
+  }
+  private getAssetType() {
+    this.service.findAllAssetType().subscribe(data => {
+      // eslint-disable-next-line no-console
+      console.log('response ' + data.body);
+      this.assetLists = data.body;
     });
   }
 }
