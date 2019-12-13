@@ -61,6 +61,6 @@ export class AssetInventoryService {
   }
 
   findAllManufacturerList(): Observable<HttpResponse<IManufacturer[]>> {
-    return this.http.get<IManufacturer[]>(this.resourceUrl + '/assetList/getAll', { observe: 'response' });
+    return this.http.get<IManufacturer[]>(this.resourceUrl + '/getAllManufacturers', { observe: 'response' });
   }
 }
