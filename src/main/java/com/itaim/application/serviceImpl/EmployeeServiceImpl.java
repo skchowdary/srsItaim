@@ -2,19 +2,17 @@ package com.itaim.application.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.itaim.application.domain.Employee;
-import com.itaim.application.repository.EmployeeREpository;
+import com.itaim.application.repository.EmployeeRepository;
 import com.itaim.application.service.EmployeeService;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService
 {
 	@Autowired
-	EmployeeREpository employeerepository;
+	EmployeeRepository employeerepository;
 	
 	public String saveEmployee(Employee employee)
 	{   

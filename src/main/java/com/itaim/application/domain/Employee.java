@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Employees")
+@Table(name = "employees")
 public class Employee implements Serializable 
 {
 	private static final long serialVersionUID = 1L;
@@ -21,13 +21,13 @@ public class Employee implements Serializable
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "id", nullable= false)
 	private int id;
 	
 	@Column(name = "name", nullable = false)
 	private String name;
 	
-	@Column(name = "email-Id", nullable = false)
+	@Column(name = "email_Id", nullable = false)
 	private String email;
 	
 	@Column(name = "phone_No" , nullable = false)
@@ -41,7 +41,7 @@ public class Employee implements Serializable
 		super();
 	}
 	
-	public Employee(int id, String name, String email, long phone, String address, String client)
+	public Employee(int id, String name, String email, long phone, String address)
 	{
 		this.id = id;
 		this.name = name;

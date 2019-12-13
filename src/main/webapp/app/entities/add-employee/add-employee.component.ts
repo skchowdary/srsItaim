@@ -1,4 +1,4 @@
-import { IAddEmployee } from './add-employee.model';
+import { IAddEmployee, AddEmployee } from './add-employee.model';
 import { AssetInventoryService } from './../assetinventory.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +11,9 @@ export class AddEmployeeComponent implements OnInit {
   addEmployee: IAddEmployee;
   constructor(private service: AssetInventoryService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.addEmployee = new AddEmployee();
+  }
   onSave() {
     this.service.createEmployee(this.addEmployee).subscribe(res => {
       this.addEmployee = res.body;

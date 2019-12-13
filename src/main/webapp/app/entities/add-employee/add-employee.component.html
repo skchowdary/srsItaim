@@ -12,38 +12,33 @@
                         <h2>ADD EMPLOYEE</h2>
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name" [(ngModel)]="addEmployee.name"
-                                #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required />
-                            <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
-                                <div *ngIf="name.errors.required">This field is required</div>
-                            </div>
+                            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="addEmployee.name"
+                                 required />{{addEmployee.name}}
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input class="form-control" name="email" [(ngModel)]="addEmployee.email" type="email"
-                                #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required>
-                            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                            <input class="form-control" name="email" id="email"[(ngModel)]="addEmployee.email" type="email"
+                                 required>{{addEmployee.email}}
+                            <!-- <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
                                 <div *ngIf="email.errors.required">This field is required</div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone No</label>
-                            <input type="text" class="form-control" name="phone" [(ngModel)]="addEmployee.phone"
-                                #phoneNum="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
-                                required />
-                            <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+                            <input type="text" class="form-control" name="phone" id="phoneNum" [(ngModel)]="addEmployee.phone"
+                                required />{{addEmployee.phone}}
+                            <!-- <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
                                 <div *ngIf="phone.errors.required">This field is required</div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea class="form-control" name="address" rows="3" cols="5"
-                                [(ngModel)]="addEmployee.address" #address="ngModel"
-                                [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" style="resize: none"
-                                required></textarea>
-                            <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
+                            <textarea class="form-control" id ="address" name="address" rows="3" cols="5"
+                                [(ngModel)]="addEmployee.address" style="resize: none"
+                                required></textarea>{{addEmployee.address}}
+                            <!-- <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
                                 <div *ngIf="address.errors.required">This field is required</div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="submitButton">
                             <button type="submit" class="btn btn-primary text-center">Save</button>

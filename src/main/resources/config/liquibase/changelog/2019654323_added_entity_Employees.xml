@@ -20,7 +20,7 @@
                 <constraints nullable="false" />
             </column>
             
-            <column name="email-Id" type="varchar(90)">
+            <column name="email_Id" type="varchar(90)">
             	<constraints nullable="false" />
             </column>
             
@@ -29,10 +29,6 @@
             </column>
             
             <column name="address" type="varchar(250)">
-            	<constraints nullable="false" />
-            </column>
-            
-            <column name="clientName" type="varchar(90)">
             	<constraints nullable="false" />
             </column>
             

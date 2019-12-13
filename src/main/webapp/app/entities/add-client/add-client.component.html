@@ -12,11 +12,11 @@
                         <h2>ADD CLIENT</h2>
                         <div class="form-group">
                             <label for="clientName">Client Name</label>
-                            <input type="text" class="form-control" name="clientName" [(ngModel)]="addClient.clientName"
-                                #clientName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clientName.invalid }" required />
-                            <div *ngIf="f.submitted && clientName.invalid" class="invalid-feedback">
+                            <input type="text" id="clientName" class="form-control" name="clientName" [(ngModel)]="addClient.clientName" required />
+                            {{addClient.clientName}}
+                            <!-- <div *ngIf="f.submitted && clientName.invalid" class="invalid-feedback">
                                 <div *ngIf="clientName.errors.required">This field is required</div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="submitButton">
                             <button type="submit" class="btn btn-primary text-center">Save</button>
