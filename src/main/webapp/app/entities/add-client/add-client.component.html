@@ -13,7 +13,7 @@
                         <div class="form-group">
                             <label for="clientName">Client Name</label>
                             <input type="text" class="form-control" name="clientName" [(ngModel)]="addClient.clientName"
-                                #clientName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clientName.invalid }" required />
+                                #clientName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clientName.invalid }" pattern="[A-Za-z]{1,32}" required />
                             <div *ngIf="f.submitted && clientName.invalid" class="invalid-feedback">
                                 <div *ngIf="clientName.errors.required">This field is required</div>
                             </div>
