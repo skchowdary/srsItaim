@@ -45,7 +45,6 @@ public class AssetListController {
 	public String deleteAssetById(@PathVariable int id) {
 		assetListService.DeleteAssetById(id);
 		return "Asset Delete successfully by its Id";
-
 	}
 
 }

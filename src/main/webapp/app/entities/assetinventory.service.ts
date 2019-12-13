@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { createRequestOption } from 'app/shared/util/request-util';
-import { IAssetList } from './asset-type.module';
+import { IAssetList } from './asset-type.model';
+import { IManufacturer } from './manufacturer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +58,9 @@ export class AssetInventoryService {
 
   findAllAssetType(): Observable<HttpResponse<IAssetList[]>> {
     return this.http.get<IAssetList[]>(this.resourceUrl + '/assetList/getAll', { observe: 'response' });
+  }
+
+  findAllManufacturerList(): Observable<HttpResponse<IManufacturer[]>> {
+    return this.http.get<IManufacturer[]>(this.resourceUrl + '/assetList/getAll', { observe: 'response' });
   }
 }

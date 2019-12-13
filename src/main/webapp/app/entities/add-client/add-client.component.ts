@@ -2,6 +2,7 @@ import { IClient, Client } from './add-client.model';
 import { Component, OnInit } from '@angular/core';
 import { AssetInventoryService } from '../assetinventory.service';
 import { tsExpressionWithTypeArguments } from '@babel/types';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'jhi-add-client',
@@ -17,9 +18,12 @@ export class AddClientComponent implements OnInit {
   }
   onSubmit() {
     this.service.createClient(this.addClient).subscribe(res => {
-      // eslint-disable-next-line no-console
-      console.log(this.addClient);
-      this.addClient = res.body;
+      if (res.status === 200) {
+        this.addClient = res.body;
+        Swal.fire('', 'Successfully Saved', 'success');
+      } else if (res.status === 208) {
+        Swal.fire('Oops', 'name is already exist', 'error');
+      }
     });
   }
   reset() {

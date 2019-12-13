@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itaim.application.domain.AssignAsset;
+import com.itaim.application.domain.Employee;
 import com.itaim.application.serviceImpl.AssignAssetServiceImpl;
 
 @RestController
@@ -20,11 +23,23 @@ public class AssignAssetController
 	AssignAssetServiceImpl service;
 
 	@RequestMapping(value = "/assignAsset/save", method = RequestMethod.POST)
-	public String save(@RequestBody AssignAsset asset)
-	{
-		service.saveAssignedAsset(asset);
-		return "Assets are Assigned and saved";
-	}
+//	public String save(@RequestBody AssignAsset asset)
+//	{
+//		service.saveAssignedAsset(asset);
+//		return "Assets are Assigned and saved";
+//	}
+	public ResponseEntity<Boolean> save(@RequestBody AssignAsset assignAsset) {
+	      if (assignAsset.getId() == 0) {
+	      List<AssignAsset> assignAssetList = service.getAssignedAsset();
+	      if (assignAssetList.stream().filter(data -> data.getSerialNumber().equals(assignAsset.getSerialNumber())).count() > 0) {
+	         return new ResponseEntity<Boolean>(false, HttpStatus.ALREADY_REPORTED);
+	      }
+	      service.saveAssignedAsset(assignAsset);
+	      } else {
+	    	  service.saveAssignedAsset(assignAsset);
+	      }
+	        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	 }
 
 	@RequestMapping(value = "/assignAsset/getAll", method = RequestMethod.GET)
 	public List<AssignAsset> getAssignedAsset()

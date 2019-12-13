@@ -3,7 +3,8 @@ import { IAddEmployee } from './../add-employee/add-employee.model';
 import { IAssignAsset, AssignAsset } from './assign-asset.model';
 import { Component, OnInit } from '@angular/core';
 import { AssetInventoryService } from '../assetinventory.service';
-import { IAssetList } from '../asset-type.module';
+import { IAssetList } from '../asset-type.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'jhi-assign-asset',
@@ -26,7 +27,12 @@ export class AssignAssetComponent implements OnInit {
 
   onSubmit() {
     this.service.createAssignAsset(this.assignAsset).subscribe(res => {
-      this.assignAsset = res.body;
+      if (res.status === 200) {
+        this.assignAsset = res.body;
+        Swal.fire('', 'Successfully Saved', 'success');
+      } else if (res.status === 208) {
+        Swal.fire('Oops', 'This Serial No. is already assigned', 'error');
+      }
     });
   }
   private getEmpList() {
@@ -45,5 +51,11 @@ export class AssignAssetComponent implements OnInit {
       console.log('response ' + data.body);
       this.assetLists = data.body;
     });
+  }
+  reset() {
+    this.assignAsset.assetType = null;
+    this.assignAsset.serialNumber = null;
+    this.assignAsset.assignTo = null;
+    this.assignAsset.assignmentDate = null;
   }
 }
