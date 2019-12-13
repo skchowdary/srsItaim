@@ -9,7 +9,7 @@
     <property name="autoIncrement" value="true"/>
 
     <!-- Added the entity Clients. -->
-    <changeSet id="2019654324" author="jhipster">
+    <changeSet id="20196543245" author="jhipster">
         <createTable tableName="asset_list" >
         
             <column name="id" type="int" autoIncrement="${autoIncrement}">
@@ -19,7 +19,7 @@
             <column name="asset_name" type="varchar(90)">
                 <constraints nullable="false" />
             </column>
-   
+ 
         </createTable>
     </changeSet>
 </databaseChangeLog>
