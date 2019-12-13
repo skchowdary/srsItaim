@@ -18,9 +18,10 @@ export class AddEmployeeComponent implements OnInit {
   onSave() {
     this.service.createEmployee(this.addEmployee).subscribe(res => {
       if (res.status === 200) {
-        this.addEmployee = res.body;
+        this.addEmployee = new AddEmployee();
         Swal.fire('', 'Successfully Saved', 'success');
       } else if (res.status === 208) {
+        this.addEmployee = new AddEmployee();
         Swal.fire('Oops', 'Email Id is already exist', 'error');
       }
     });

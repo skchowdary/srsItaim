@@ -19,9 +19,10 @@ export class AddClientComponent implements OnInit {
   onSubmit() {
     this.service.createClient(this.addClient).subscribe(res => {
       if (res.status === 200) {
-        this.addClient = res.body;
+        this.addClient = new Client();
         Swal.fire('', 'Successfully Saved', 'success');
       } else if (res.status === 208) {
+        this.addClient = new Client();
         Swal.fire('Oops', 'name is already exist', 'error');
       }
     });

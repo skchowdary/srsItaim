@@ -26,9 +26,10 @@ export class AddAssetComponent implements OnInit {
   save() {
     this.service.createAddAsset(this.addAsset).subscribe(res => {
       if (res.status === 200) {
-        this.addAsset = res.body;
+        this.addAsset = new AddAsset();
         Swal.fire('', 'Successfully Saved', 'success');
       } else if (res.status === 208) {
+        this.addAsset = new AddAsset();
         Swal.fire('Oops', 'This Serial No. is already exist', 'error');
       }
     });

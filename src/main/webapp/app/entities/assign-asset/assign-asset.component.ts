@@ -28,9 +28,10 @@ export class AssignAssetComponent implements OnInit {
   onSubmit() {
     this.service.createAssignAsset(this.assignAsset).subscribe(res => {
       if (res.status === 200) {
-        this.assignAsset = res.body;
+        this.assignAsset = new AssignAsset();
         Swal.fire('', 'Successfully Saved', 'success');
       } else if (res.status === 208) {
+        this.assignAsset = new AssignAsset();
         Swal.fire('Oops', 'This Serial No. is already assigned', 'error');
       }
     });
