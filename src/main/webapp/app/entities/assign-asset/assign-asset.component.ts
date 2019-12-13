@@ -53,9 +53,9 @@ export class AssignAssetComponent implements OnInit {
     });
   }
   reset() {
-    this.assignAsset.assetType = null;
-    this.assignAsset.serialNumber = null;
-    this.assignAsset.assignTo = null;
+    this.assignAsset.assetType = '';
+    this.assignAsset.serialNumber = '';
+    this.assignAsset.assignTo = '';
     this.assignAsset.assignmentDate = null;
   }
 }

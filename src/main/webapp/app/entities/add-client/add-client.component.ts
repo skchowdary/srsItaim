@@ -27,6 +27,6 @@ export class AddClientComponent implements OnInit {
     });
   }
   reset() {
-    this.addClient.clientName = null;
+    this.addClient.clientName = '';
   }
 }

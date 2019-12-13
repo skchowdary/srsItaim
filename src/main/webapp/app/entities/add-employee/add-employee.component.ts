@@ -26,9 +26,9 @@ export class AddEmployeeComponent implements OnInit {
     });
   }
   reset() {
-    this.addEmployee.name = null;
-    this.addEmployee.email = null;
+    this.addEmployee.name = '';
+    this.addEmployee.email = '';
     this.addEmployee.phone = null;
-    this.addEmployee.address = null;
+    this.addEmployee.address = '';
   }
 }

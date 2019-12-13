@@ -44,10 +44,10 @@ export class AddAssetComponent implements OnInit {
     });
   }
   reset() {
-    this.addAsset.assetType = null;
-    this.addAsset.serialNumber = null;
-    this.addAsset.modelNumber = null;
-    this.addAsset.manufacturer = null;
+    this.addAsset.assetType = '';
+    this.addAsset.serialNumber = '';
+    this.addAsset.modelNumber = '';
+    this.addAsset.manufacturer = '';
     this.addAsset.procurementDate = null;
   }
 }
