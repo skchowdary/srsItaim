@@ -9,12 +9,7 @@
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <form name="editForm" role="form" (ngSubmit)="f.form.valid && save()" #f="ngForm">
-                        <div *ngIf="!id">
-                            <h2 class="jhi-professional-heading">ADD ASSET</h2>
-                        </div>
-                        <div *ngIf="id">
-                            <h2 class="jhi-professional-heading">Update Asset</h2>
-                        </div>
+                        <h2 class="text-center">ADD ASSET</h2>
                         <div class="form-group">
                             <label class="form-control-label">Asset Type</label>
                             <select name="assetType" class="form-control" [(ngModel)]="addAsset.assetType"
@@ -28,7 +23,6 @@
                                 </div>
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label for="serialNumber">Serial Number</label>
                             <input type="text" class="form-control" name="serialNumber"
@@ -50,8 +44,8 @@
                         <div class="form-group">
                             <label for="manufacturer">Manufacturer</label>
                             <select name="manufacturer" class="form-control" [(ngModel)]="addAsset.manufacturer"
-                                #manufacturer="ngModel" [ngClass]="{ 'is-invalid': f.submitted && manufacturer.invalid }"
-                                required>
+                                #manufacturer="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && manufacturer.invalid }" required>
                                 <option *ngFor="let names of manufacturerList" [value]='names.manufacturerName'>
                                     {{names.manufacturerName}}
                                 </option>
@@ -69,7 +63,7 @@
                                 <div *ngIf="procurementDate.errors.required">This field is required</div>
                             </div>
                         </div>
-                        <div class="btnemp">
+                        <div class="text-center">
                             <button type="submit" id="save-entity" class="btn btn-primary text-center">
                                 Save
                             </button>

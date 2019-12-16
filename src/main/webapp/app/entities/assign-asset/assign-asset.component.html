@@ -9,11 +9,12 @@
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                            <h2>ASSIGN ASSET</h2>
+                        <h2 class="text-center">ASSIGN ASSET</h2>
                         <div class="form-group">
                             <label for="assetType">Asset Type:</label>
                             <select name="assetType" class="form-control" [(ngModel)]="assignAsset.assetType"
-                                #assetType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assetType.invalid }" required>
+                                #assetType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assetType.invalid }"
+                                required>
                                 <option *ngFor="let types of assetLists" [value]='types.assetName'>
                                     {{types.assetName}}
                                 </option>
@@ -25,19 +26,21 @@
                         <div class="form-group">
                             <label for="serialNumber">Serial No</label>
                             <select name="serialNumber" class="form-control" [(ngModel)]="assignAsset.serialNumber"
-                            #serialNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }" required>
-                            <option *ngFor="let serialNo of serialNoLists" [value]='serialNo.serialNumber'>
-                                {{serialNo.serialNumber}}
-                            </option>
-                            <div *ngIf="f.submitted && serialNumber.invalid" class="invalid-feedback">
-                                <div *ngIf="serialNumber.errors.required">This field is required</div>
-                            </div>
-                        </select>
+                                #serialNumber="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }" required>
+                                <option *ngFor="let serialNo of serialNoLists" [value]='serialNo.serialNumber'>
+                                    {{serialNo.serialNumber}}
+                                </option>
+                                <div *ngIf="f.submitted && serialNumber.invalid" class="invalid-feedback">
+                                    <div *ngIf="serialNumber.errors.required">This field is required</div>
+                                </div>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="assignTo">Assign To:</label>
                             <select name="assignTo" class="form-control" [(ngModel)]="assignAsset.assignTo"
-                                #assignTo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assignTo.invalid }" required>
+                                #assignTo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assignTo.invalid }"
+                                required>
                                 <option *ngFor="let emp of this.employeeName" [value]='emp.name'>
                                     {{emp.name}}
                                 </option>
@@ -48,19 +51,18 @@
                         </div>
                         <div class="form-group">
                             <label for="assignmentDate">Assignment Date</label>
-                            <input class="form-control" name="assignmentDate"
-                                [(ngModel)]="assignAsset.assignmentDate" type="date"
-                                #assignmentDate="ngModel" placeholder="yyyy-mm-dd"
+                            <input class="form-control" name="assignmentDate" [(ngModel)]="assignAsset.assignmentDate"
+                                type="date" #assignmentDate="ngModel" placeholder="yyyy-mm-dd"
                                 [ngClass]="{ 'is-invalid': f.submitted && assignmentDate.invalid }" required>
                             <div *ngIf="f.submitted && assignmentDate.invalid" class="invalid-feedback">
                                 <div *ngIf="assignmentDate.errors.required">This field is required</div>
                             </div>
                         </div>
-                        <div class="submitButton">
+                        <div class="text-center">
                             <button type="submit" class="btn btn-primary text-center">Save</button>
                             <button type="button" class="btn btnStyle btn-secondary" (click)="reset()">
-                            Reset
-                        </button>
+                                Reset
+                            </button>
                         </div>
                     </form>
                 </div>

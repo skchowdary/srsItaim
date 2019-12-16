@@ -9,13 +9,16 @@
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <form name="form" (ngSubmit)="f.form.valid && onSave()" #f="ngForm" novalidate>
-                        <h2>ADD EMPLOYEE</h2>
+                        <h2 class="text-center">ADD EMPLOYEE</h2>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" name="name" [(ngModel)]="addEmployee.name"
-                                #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" pattern="[A-Za-z]{1,32}" required />
+                                #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                                pattern="[A-Za-z]+" required />
                             <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
                                 <div *ngIf="name.errors.required">This field is required</div>
+                                <div *ngIf="name.errors.pattern">Name shouldn't contain numeric or special characters
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -28,11 +31,13 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone No</label>
-                            <input type="text" class="form-control" name="phone" [(ngModel)]="addEmployee.phone" maxlength="10" pattern="[0-9]{10}"
-                                #phone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
-                                required />
+                            <input type="text" class="form-control" name="phone" [(ngModel)]="addEmployee.phone"
+                                pattern="[0-9]{10}" #phone="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" required />
                             <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
                                 <div *ngIf="phone.errors.required">This field is required</div>
+                                <div *ngIf="phone.errors.pattern">Phone number is invalid
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -45,7 +50,7 @@
                                 <div *ngIf="address.errors.required">This field is required</div>
                             </div>
                         </div>
-                        <div class="submitButton">
+                        <div class="text-center">
                             <button type="submit" class="btn btn-primary text-center">Save</button>
                             <button type="button" class="btn btnStyle btn-secondary" (click)="reset()">
                                 Reset

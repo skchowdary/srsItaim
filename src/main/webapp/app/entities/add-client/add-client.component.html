@@ -9,16 +9,16 @@
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                        <h2>ADD CLIENT</h2>
+                        <h2 class="text-center">ADD CLIENT</h2>
                         <div class="form-group">
                             <label for="clientName">Client Name</label>
                             <input type="text" class="form-control" name="clientName" [(ngModel)]="addClient.clientName"
-                                #clientName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clientName.invalid }" pattern="[A-Za-z]{1,32}" required />
+                                #clientName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clientName.invalid }" required/>
                             <div *ngIf="f.submitted && clientName.invalid" class="invalid-feedback">
                                 <div *ngIf="clientName.errors.required">This field is required</div>
                             </div>
                         </div>
-                        <div class="submitButton">
+                        <div class="text-center">
                             <button type="submit" class="btn btn-primary text-center">Save</button>
                             <button type="button" class="btn btnStyle btn-secondary" (click)="reset()">
                                 Reset
