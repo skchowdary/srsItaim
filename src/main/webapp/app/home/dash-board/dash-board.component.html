@@ -3,16 +3,13 @@
     <h2>Dashboard</h2>
   </div>
   <div class="row">
+    <div class="col-md-4"></div>
     <div class="col-md-4 col-xs-12">
       <button id="jh-create-entity" class="button btn-primary" [routerLink]="['/addassets']">
         <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
         <span class="hidden-sm-down">Add Asset</span>
       </button>
       <button class="button btn-primary" [routerLink]="['/assignasset']">Assign Asset</button>
-
-      <button class="button btn-primary" [routerLink]="['/reports']">REPORTS</button>
-      <button class="button btn-primary" [routerLink]="['/releaseasset']">RELEASE ASSET</button>
-
       <button id="jh-create-entity" class="button btn-primary" [routerLink]="['/addemployee']">
         <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
         <span class="hidden-sm-down">Add Employee</span>
@@ -22,6 +19,8 @@
         <!-- <fa-icon [icon]="'plus'"></fa-icon> -->
         <span class="hidden-sm-down">Add Client</span>
       </button>
+      <button class="button btn-primary" [routerLink]="['/reports']">REPORTS</button>
+      <button class="button btn-primary" [routerLink]="['/releaseasset']">RELEASE ASSET</button>
     </div>
   </div>
 </div>
