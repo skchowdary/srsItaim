@@ -11,28 +11,41 @@
   flex-basis: 100%;
   flex: 1;
 }
-
-.sidebar {
+.button {
+  float: left;
+  border: 1px solid;
+  padding: 15px 10px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+  margin: 0px 5px;
+  margin-top: 0px;
   cursor: pointer;
   border-radius: 5px;
-  margin: 4px 0 0 0;
-  height: auto;
-  border: 1px solid cornflowerblue;
-  font-family: fantasy;
-  background: #325d88;
-  color: #eaeaea;
-}
-p {
-  margin-bottom: 0px !important;
+  margin-top: 4px;
 }
 
-.chartbox {
-  text-align: center;
+// .sidebar {
+//   text-align: center;
+//   text-decoration: none;
+//   font-size: 16px;
+//   cursor: pointer;
+//   border-radius: 5px;
+//   margin: 4px 0 0 0;
+//   height: auto;
+//   border: 1px solid cornflowerblue;
+//   font-family: fantasy;
+//   background: #325d88;
+//   color: #eaeaea;
+// }
+// p {
+//   margin-bottom: 0px !important;
+// }
+
+// .chartbox {
+//   text-align: center;
   // background-color: ghostwhite;
-}
+
 
 .heading {
   text-align: center;
@@ -47,48 +60,53 @@ p {
   }
 }
 
-.name {
-  text-transform: capitalize;
-  padding: 5px;
-  border-bottom: 1px solid lightgoldenrodyellow;
-  font-size: 18px;
-  height: auto !important;
-}
+// .name {
+//   text-transform: capitalize;
+//   padding: 5px;
+//   border-bottom: 1px solid lightgoldenrodyellow;
+//   font-size: 18px;
+//   height: auto !important;
+// }
 
-.filter {
-  margin-top: 2px;
-  margin-left: 11px;
-}
+// .filter {
+//   margin-top: 2px;
+//   margin-left: 11px;
+// }
 
-tr:nth-child(odd) {
-  background: white !important;
-}
+// tr:nth-child(odd) {
+//   background: white !important;
+// }
 
-tr:nth-child(even) {
-  background: #eaeaea !important;
-}
+// tr:nth-child(even) {
+//   background: #eaeaea !important;
+// }
+.btn-primary {
+  font-variant: all-petite-caps;
+  font-size: 1.5em;
+  width: 100%;
+  align-content: center;
 
-.errorMessage {
-  display: flex;
-  justify-content: center;
-  font-size: 23px;
-  font-weight: 400;
-  font-family: monospace;
-  margin-top: 40px;
-}
+// .errorMessage {
+//   display: flex;
+//   justify-content: center;
+//   font-size: 23px;
+//   font-weight: 400;
+//   font-family: monospace;
+//   margin-top: 40px;
+// }
 
-table {
-  // table-layout: fixed;
-  word-wrap: break-word;
-}
+// table {
+//   // table-layout: fixed;
+//   word-wrap: break-word;
+// }
 
-td {
-  font-family: serif;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 160px !important;
-  height: 1.2em;
-  white-space: nowrap;
+// td {
+//   font-family: serif;
+//   text-overflow: ellipsis;
+//   overflow: hidden;
+//   width: 160px !important;
+//   height: 1.2em;
+//   white-space: nowrap;
 }
 
 @media (max-width: 425px) {
