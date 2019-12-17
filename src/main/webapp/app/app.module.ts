@@ -16,6 +16,8 @@ import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -24,7 +26,9 @@ import { ErrorComponent } from './layouts/error/error.component';
     ItaimApplicationHomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     ItaimApplicationEntityModule,
-    ItaimApplicationAppRoutingModule
+    ItaimApplicationAppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
     // FontAwesomeModule
   ],
   declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
