@@ -1,6 +1,7 @@
 package com.itaim.application.web.rest;
 
-import java.util.List;import java.util.Optional;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.itaim.application.domain.Client;
 import com.itaim.application.serviceImpl.ClientServiceImpl;
 
@@ -42,17 +44,29 @@ public class ClientController
 	{
 		return clientServiceImpl.getAllClients();
 	}
-	@RequestMapping(value = "client/GetById{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "client/{id}", method=RequestMethod.GET)
 	public Optional<Client> getClientById(@PathVariable Integer id)
 	{
 		return clientServiceImpl.getClientById(id);
 	}
-	@RequestMapping(value = "client/update{id}", method=RequestMethod.PUT)
-	public Client updateById(@RequestBody Client client,@PathVariable Integer id)
-	{
-		return clientServiceImpl.updateById(client);
+	@RequestMapping(value = "client/update", method=RequestMethod.PUT)
+//	public Client updateById(@RequestBody Client client,@PathVariable Integer id)
+//	{
+//		return clientServiceImpl.updateById(client);
+//	}
+	public ResponseEntity<Boolean> update(@RequestBody Client client) {
+	      if (client.getId() != 0) {
+	      List<Client> clientList = clientServiceImpl.getAllClients();
+	      if (clientList.stream().filter(data -> data.getClientName().equals(client.getClientName())).count()>0) {
+	         return new ResponseEntity<Boolean>(false, HttpStatus.ALREADY_REPORTED);
+	      }
+	      clientServiceImpl.saveClient(client);
+	      } else {
+	    	  clientServiceImpl.saveClient(client);
+	      }
+	        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}
-	@RequestMapping(value = "client/delete{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value = "client/{id}", method=RequestMethod.DELETE)
 	public String DeleteClientById(@PathVariable Integer id) 
 	{
 		clientServiceImpl.DeleteClientById(id);

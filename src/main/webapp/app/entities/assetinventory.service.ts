@@ -56,6 +56,18 @@ export class AssetInventoryService {
     return this.http.get<IClient[]>(this.resourceUrl + 'client/getAll', { observe: 'response' });
   }
 
+  updateClient(assign: IClient): Observable<HttpResponse<IClient>> {
+    return this.http.put<IClient>(this.resourceUrl + '/client/update', assign, { observe: 'response' });
+  }
+
+  deleteClient(id: any): Observable<HttpResponse<IClient>> {
+    return this.http.delete(this.resourceUrl + `/client/${id}`, { observe: 'response' });
+  }
+
+  findClientById(id: any): Observable<HttpResponse<IClient>> {
+    return this.http.get(this.resourceUrl + `/client/${id}`, { observe: 'response' });
+  }
+
   findAllAssetType(): Observable<HttpResponse<IAssetList[]>> {
     return this.http.get<IAssetList[]>(this.resourceUrl + '/assetList/getAll', { observe: 'response' });
   }

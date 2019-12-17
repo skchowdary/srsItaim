@@ -13,7 +13,8 @@
                         <div class="form-group">
                             <label for="clientName">Client Name</label>
                             <input type="text" class="form-control" name="clientName" [(ngModel)]="addClient.clientName"
-                                #clientName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clientName.invalid }" required/>
+                                #clientName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && clientName.invalid }"
+                                [value]="addClient.clientName" required />
                             <div *ngIf="f.submitted && clientName.invalid" class="invalid-feedback">
                                 <div *ngIf="clientName.errors.required">This field is required</div>
                             </div>
@@ -26,6 +27,41 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="table-responsive text-center">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th><span>ID</span>
+                                <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
+                            </th>
+                            <th><span>NAME</span>
+                                <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
+                            </th>
+                            <th><span>Action</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let client of clientsList">
+                            <td>{{client.id}}</td>
+                            <td>{{client.clientName}}</td>
+                            <td class="text-center">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="submit" class="btn btn-primary btn-sm"
+                                        (click)="editClient(client.id)">
+                                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                        <span class="d-none d-md-inline">Edit</span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        (click)="deleteClient(client.id)">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                        <span class="d-none d-md-inline">Delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -27,7 +27,7 @@
                             <label for="serialNumber">Serial Number</label>
                             <input type="text" class="form-control" name="serialNumber"
                                 [(ngModel)]="addAsset.serialNumber" #serialNumber="ngModel"
-                                [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }" required />
+                                [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }" maxlength="30" required />
                             <div *ngIf="f.submitted && serialNumber.invalid" class="invalid-feedback">
                                 <div *ngIf="serialNumber.errors.required">This field is required</div>
                             </div>
