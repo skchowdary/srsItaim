@@ -14,7 +14,7 @@
                             <label for="name">Name</label>
                             <input type="text" class="form-control" name="name" [(ngModel)]="addEmployee.name"
                                 #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
-                                pattern="[A-Za-z]+" required />
+                                pattern="^[A-Za-z -]+$" required />
                             <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
                                 <div *ngIf="name.errors.required">This field is required</div>
                                 <div *ngIf="name.errors.pattern">Name shouldn't contain numeric or special characters
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label for="phone">Phone No</label>
                             <input type="text" class="form-control" name="phone" [(ngModel)]="addEmployee.phone"
-                                pattern="[0-9]{10}" #phone="ngModel"
+                                pattern="[0-9]{10}" #phone="ngModel" maxlength="10"
                                 [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" required />
                             <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
                                 <div *ngIf="phone.errors.required">This field is required</div>

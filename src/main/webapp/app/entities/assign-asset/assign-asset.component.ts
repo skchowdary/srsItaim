@@ -16,6 +16,9 @@ export class AssignAssetComponent implements OnInit {
   employeeName: IAddEmployee[] = [];
   assetLists: IAssetList[] = [];
   serialNoLists: IAddAsset[] = [];
+  assignmentDateValue: any;
+  serialNumberValue: any;
+  invalidDate: boolean;
   constructor(private service: AssetInventoryService) {}
 
   ngOnInit() {
@@ -26,15 +29,28 @@ export class AssignAssetComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.createAssignAsset(this.assignAsset).subscribe(res => {
-      if (res.status === 200) {
-        this.assignAsset = new AssignAsset();
-        Swal.fire('', 'Successfully Saved', 'success');
-      } else if (res.status === 208) {
-        this.assignAsset = new AssignAsset();
-        Swal.fire('Oops', 'This Serial No. is already assigned', 'error');
+    this.invalidDate = false;
+    for (let i = 0; i < this.serialNoLists.length; i++) {
+      this.assignmentDateValue = this.assignAsset.assignmentDate;
+      this.serialNumberValue = this.assignAsset.serialNumber;
+      if (this.serialNumberValue === this.serialNoLists[i].serialNumber) {
+        if (this.assignmentDateValue < this.serialNoLists[i].procurementDate) {
+          this.invalidDate = true;
+          Swal.fire('', 'Assignment Date should be greater than purchase date', 'warning');
+        }
       }
-    });
+    }
+    if (!this.invalidDate) {
+      this.service.createAssignAsset(this.assignAsset).subscribe(res => {
+        if (res.status === 200) {
+          this.assignAsset = new AssignAsset();
+          Swal.fire('', 'Successfully Saved', 'success');
+        } else if (res.status === 208) {
+          this.assignAsset = new AssignAsset();
+          Swal.fire('Oops', 'This Serial No. is already assigned', 'error');
+        }
+      });
+    }
   }
   private getEmpList() {
     this.service.findAllEmployee().subscribe(data => {
