@@ -15,9 +15,11 @@ import { RELEASEASSET_ROUTE } from './release-asset/release-asset.route';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgxPaginationModule } from 'ngx-pagination';
+
 import { ViewClientComponent } from './view-client/view-client.component';
 import { VIEWCLIENT_ROUTE } from './view-client/view-client.route';
+import { VIEWASSET_ROUTE } from './view-asset/view-asset.route';
+import { ViewAssetComponent } from './view-asset/view-asset.component';
 
 @NgModule({
   imports: [
@@ -25,7 +27,7 @@ import { VIEWCLIENT_ROUTE } from './view-client/view-client.route';
     FormsModule,
     CommonModule,
     FontAwesomeModule,
-    NgxPaginationModule,
+
     RouterModule.forChild([
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
       ADDASSETS_ROUTE,
@@ -34,7 +36,8 @@ import { VIEWCLIENT_ROUTE } from './view-client/view-client.route';
       ADDCLIENT_ROUTE,
       REPORTS_ROUTE,
       RELEASEASSET_ROUTE,
-      VIEWCLIENT_ROUTE
+      VIEWCLIENT_ROUTE,
+      VIEWASSET_ROUTE
     ])
   ],
   declarations: [
@@ -44,7 +47,8 @@ import { VIEWCLIENT_ROUTE } from './view-client/view-client.route';
     AddEmployeeComponent,
     AddClientComponent,
     ReportsComponent,
-    ViewClientComponent
+    ViewClientComponent,
+    ViewAssetComponent
   ]
 })
 export class ItaimApplicationEntityModule {}

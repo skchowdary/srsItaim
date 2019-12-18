@@ -1,0 +1,42 @@
+<button type="submit" routerLink="/dashboard" class="btn btn-info">
+  &nbsp;<span> Back</span>
+  </button>
+  <div class="header heading chartbox text-center">
+  
+  <h2>REPORTS</h2>
+  
+  </div>
+
+
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <!-- <th scope="col">#</th> -->
+        <th scope="col">Asset Type</th>
+        <th scope="col">Serial Number</th>
+        <th scope="col">Modal Number</th>
+        <th scope="col">Manufacturer</th>
+        <th scope="col">Procurement Date</th>
+        <th scope="col">Assigned To</th>
+        <th scope="col">Assignment Date</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="viewAddAsset.length"> 
+        <tr *ngFor="let asset of viewAddAsset;let i=index;">
+        <!-- <th scope="row">1</th> -->
+        <td>{{asset.assetType}}</td>
+        <td>{{asset.serialNumber}}</td>
+        <td>{{asset.modelNumber}}</td>
+        <td>{{asset.manufacturer}}</td>
+        <td>{{asset.procurementDate}}</td>
+        <td>{{viewAssignAsset[i].assignTo}}</td>
+        <td>{{viewAssignAsset[i].assignmentDate}}</td>
+      </tr>
+    </tbody>
+    <!-- <ul *ngFor="let assetAnother of viewAssignAsset">
+        <li>{{assetAnother.assignTo}}</li>
+        <li>{{assetAnother.assignmentDate}}</li>
+    </ul> -->
+  </table>
+</div>
