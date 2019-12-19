@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itaim.application.domain.AssignAsset;
+import com.itaim.application.domain.Client;
 import com.itaim.application.domain.Employee;
 import com.itaim.application.serviceImpl.AssignAssetServiceImpl;
 
@@ -23,23 +24,23 @@ public class AssignAssetController
 	AssignAssetServiceImpl service;
 
 	@RequestMapping(value = "/assignAsset/save", method = RequestMethod.POST)
-//	public String save(@RequestBody AssignAsset asset)
-//	{
-//		service.saveAssignedAsset(asset);
-//		return "Assets are Assigned and saved";
-//	}
-	public ResponseEntity<Boolean> save(@RequestBody AssignAsset assignAsset) {
-	      if (assignAsset.getId() == 0) {
-	      List<AssignAsset> assignAssetList = service.getAssignedAsset();
-	      if (assignAssetList.stream().filter(data -> data.getSerialNumber().equals(assignAsset.getSerialNumber())).count() > 0) {
-	         return new ResponseEntity<Boolean>(false, HttpStatus.ALREADY_REPORTED);
-	      }
-	      service.saveAssignedAsset(assignAsset);
-	      } else {
-	    	  service.saveAssignedAsset(assignAsset);
-	      }
-	        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
-	 }
+	public String save(@RequestBody AssignAsset asset)
+	{
+		service.saveAssignedAsset(asset);
+		return "Assets are Assigned and saved";
+	}
+//	public ResponseEntity<Boolean> save(@RequestBody AssignAsset assignAsset) {
+//	      if (assignAsset.getId() == 0) {
+//	      List<AssignAsset> assignAssetList = service.getAssignedAsset();
+//	      if (assignAssetList.stream().filter(data -> data.getSerialNumber().equals(assignAsset.getSerialNumber())).count() > 0) {
+//	         return new ResponseEntity<Boolean>(false, HttpStatus.ALREADY_REPORTED);
+//	      }
+//	      service.saveAssignedAsset(assignAsset);
+//	      } else {
+//	    	  service.saveAssignedAsset(assignAsset);
+//	      }
+//	        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+//	 }
 
 	@RequestMapping(value = "/assignAsset/getAll", method = RequestMethod.GET)
 	public List<AssignAsset> getAssignedAsset()
@@ -56,15 +57,19 @@ public class AssignAssetController
 		return asset.get();
 	}
 
-	@RequestMapping(value = "/assignAsset/update/{id}", method = RequestMethod.PUT)
-	public AssignAsset update(@RequestBody AssignAsset updasset, @PathVariable int id) throws Exception 
-	{
-		Optional<AssignAsset> asset = service.getAssetById(id);
-		if (!asset.isPresent())
-			throw new Exception("Could not find asset with id- " + id);
-		// Required for the "where" clause in the sql query template.
-		updasset.setId(id);
-		return service.updateAssignAsset(updasset);
+	@RequestMapping(value = "/assignAsset/update", method = RequestMethod.PUT)
+//	public AssignAsset update(@RequestBody AssignAsset updasset, @PathVariable int id) throws Exception 
+//	{
+//		Optional<AssignAsset> asset = service.getAssetById(id);
+//		if (!asset.isPresent())
+//			throw new Exception("Could not find asset with id- " + id);
+//		// Required for the "where" clause in the sql query template.
+//		updasset.setId(id);
+//		return service.updateAssignAsset(updasset);
+//	}
+	public ResponseEntity<Boolean> update(@RequestBody AssignAsset assign) {
+		         service.saveAssignedAsset(assign);
+	        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/assignAsset/delete/{id}", method = RequestMethod.DELETE)
@@ -84,5 +89,9 @@ public class AssignAssetController
 		service.deleteAllAsset();
 		return "The assest has been deleted successfully.";
 	}
-
+	
+	@RequestMapping(value = "/assignAsset/getallassigned/{status}", method = RequestMethod.GET)
+	public List<AssignAsset> findByStatus(@PathVariable String status) {
+		return service.findByStatus(status);
+	}
 }

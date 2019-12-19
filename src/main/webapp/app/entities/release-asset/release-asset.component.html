@@ -1,63 +1,52 @@
-<button type="submit" routerLink="/dashboard" class="btn btn-info">
-    &nbsp;<span> Back</span>
-    </button>
-    <div class="header heading chartbox">
-    
-    <h2>Release Asset</h2>
+<div class="container-fluid mt--9 mb-5">
+    <div class="row align-items-center">
+        <button class="btn btn-primary" [routerLink]="['/dashboard']">Back</button>
     </div>
-    <div class="row">
-    <div class="col-md-3 col-xs-12 sidebar" >
-    <div class="filter">
-    <input class="form-control"  type="text" name="search" autocomplete="off"
-    placeholder="Search for Login Name">
+    <h2 class="text-center">RELEASE ASSET</h2>
+    <div class="table-responsive text-center">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ASSET TYPE</span>
+                        <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
+                    </th>
+                    <th><span>SERIAL NO.</span>
+                        <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
+                    </th>
+                    <!-- <th><span>MODEL NO.</span></th>
+                    <th><span>MANUFACTURER</span></th>
+                    <th><span>PROCUREMENT DATE</span></th> -->
+                    <th><span>ASSIGN TO</span></th>
+                    <th><span>ASSIGNMENT DATE</span></th>  
+                    <th><span>REASON</span></th>
+                    <th><span>ACTION</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let assign of assignAssetList; let i = index">
+                    <tr>
+                            <td>{{assign.assetType}}</td>
+                            <td>{{assign.serialNumber}}</td>
+                            <td>{{assign.assignTo}}</td>
+                            <td>{{assign.assignmentDate}}</td>
+                            <!-- <td>{{asset.procurementDate}}</td>
+                            <td>{{assignAssetList[i].assignTo}}</td>
+                            <td>{{assignAssetList[i].assignmentDate}}</td> -->
+                            <td class="text-center">
+                              <textarea class="form-control" rows="1" cols="3" name=reason [(ngModel)]="reason" required></textarea>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group flex-btn-group-container">
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        (click)="releaseAssignedAsset(i)">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                        <span class="d-none d-md-inline">Release</span>
+                                    </button>
+                                </div>
+                            </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
     </div>
-    <div class="name">
-    <p (click)="mailHistroy(user.login)">{{user.login}}</p>
-    </div>
-    </div>
-    <div class="col-md-9 col-xs-12 tableBox">
-    <div class="mainBox table-responsive" >
-    <table class="table table-striped">
-    <thead>
-    <tr>
-    <th scope="col">#</th>
-    <!-- <th scope="col">Location</th> -->
-    <th scope="col">Row&nbsp;Count</th>
-    <th scope="col">Asset&nbsp;Type</th>
-    <th scope="col">Assignment&nbsp;Date</th>
-    <th scope="col">Serial No</th>
-    <th scope="col">Assign To</th>
-    <!-- <th scope="col">Domain</th>
-    <th scope="col">End&nbsp;Client</th>
-    <th scope="col">Exported&nbsp;Date</th>
-    <th scope="col">From&nbsp;Exp</th>
-    <th scope="col">To&nbsp;Exp</th>
-    <th scope="col">Status</th> -->
-    </tr>
-    </thead>
-    <tbody>
-    <tr >
-    <th scope="row">1</th>
-    <!-- <td>{{data.location == null? '-':data.location.name}}</td> -->
-    <td>{{data.rowCount}}</td>
-    <td>{{data.assetType == null? '-':data.empType.name}}</td>
-    <!-- <td>{{data.expDate}}</td>
-    <td>{{data.skills== null? '-':data.skills}}</td>
-    <td>{{data.employeeName == null? '-':data.employeeName}}</td> -->
-    <td>{{data.serialNo == null? '-':data.serialNo.name }}</td>
-    <td>{{data.assignTo == null? '-':data.assignTo.name}}</td> 
-    <td>{{data.assignmentDate== null? '-':data.assignmentDate}}</td>
-    <!-- <td>{{data.fromExperience== null? '-':data.fromExperience}}</td>
-    <td>{{data.toExperience== null? '-':data.toExperience}}</td>
-    <td>{{data.status == null? '-':data.status.name}}</td> -->
-    </tr>
-    </tbody>
-    </table>
-    </div>
-    <ng-template #errorMessage>
-    <div class="errorMessage">
-    No Data Found
-    </div>
-    </ng-template>
-    </div>
-    </div>
+</div>

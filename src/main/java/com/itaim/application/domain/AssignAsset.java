@@ -38,74 +38,64 @@ public class AssignAsset implements Serializable
 	@Column(name="assignment_date",nullable = false)
 	private Date assignmentDate;
 	
-	public AssignAsset()
-	{
-		super();
-	}
-	
-	public AssignAsset(int id, String assetType, String serialNumber, String assignTo, Date assignmentDate)
-	{
-		this.id = id;
-		this.assetType = assetType;
-		this.serialNumber = serialNumber;
-		this.assignTo = assignTo;
-		this.assignmentDate = assignmentDate;
-	}
+	@Column(name="status", nullable = false)
+	private String status;
 
-	public int getId() 
-	{
+	public int getId() {
 		return id;
 	}
 
-	public void setId(int id)
-	{
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getAssetType()
-	{
+	public String getAssetType() {
 		return assetType;
 	}
 
-	public void setAssetType(String assetType)
-	{
+	public void setAssetType(String assetType) {
 		this.assetType = assetType;
 	}
 
-	public String getSerialNumber()
-	{
+	public String getSerialNumber() {
 		return serialNumber;
 	}
 
-	public void setSerialNumber(String serialNumber) 
-	{
+	public void setSerialNumber(String serialNumber) {
 		this.serialNumber = serialNumber;
 	}
 
-	public String getAssignTo() 
-	{
+	public String getAssignTo() {
 		return assignTo;
 	}
 
-	public void setAssignTo(String assignTo) 
-	{
+	public void setAssignTo(String assignTo) {
 		this.assignTo = assignTo;
 	}
 
-	public Date getAssignmentDate() 
-	{
+	public Date getAssignmentDate() {
 		return assignmentDate;
 	}
 
-	public void setAssignmentDate(Date assignmentDate) 
-	{
+	public void setAssignmentDate(Date assignmentDate) {
 		this.assignmentDate = assignmentDate;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		return "AssignAsset [id=" + id + ", assetType=" + assetType + ", serialNumber=" + serialNumber + ", assignTo="
-				+ assignTo + ", assignmentDate=" + assignmentDate + "]";
+				+ assignTo + ", assignmentDate=" + assignmentDate + ", status=" + status + "]";
+	}
+
+	public AssignAsset() {
+		super();
 	}
 }

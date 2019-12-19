@@ -50,7 +50,8 @@ public class AssignAssetServiceImpl implements AssignAssetService
 		return "Deleted successfully.";
 	}
 
-
-
-	
+	public List<AssignAsset> findByStatus(String status) {
+		// TODO Auto-generated method stub
+		return repository.findByStatus(status);
+	}
 }

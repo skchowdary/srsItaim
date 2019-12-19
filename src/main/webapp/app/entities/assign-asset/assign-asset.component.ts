@@ -16,6 +16,7 @@ export class AssignAssetComponent implements OnInit {
   employeeName: IAddEmployee[] = [];
   assetLists: IAssetList[] = [];
   serialNoLists: IAddAsset[] = [];
+  assignAssetList: IAssignAsset[] = [];
   assignmentDateValue: any;
   serialNumberValue: any;
   invalidDate: boolean;
@@ -26,6 +27,7 @@ export class AssignAssetComponent implements OnInit {
     this.getEmpList();
     this.getSerialNoList();
     this.getAssetType();
+    this.getAllAssignAsset();
   }
 
   onSubmit() {
@@ -40,17 +42,33 @@ export class AssignAssetComponent implements OnInit {
         }
       }
     }
-    if (!this.invalidDate) {
-      this.service.createAssignAsset(this.assignAsset).subscribe(res => {
-        if (res.status === 200) {
-          this.assignAsset = new AssignAsset();
-          Swal.fire('', 'Successfully Saved', 'success');
-        } else if (res.status === 208) {
-          this.assignAsset = new AssignAsset();
-          Swal.fire('Oops', 'This Serial No. is already assigned', 'error');
+    for (let j = 0; j < this.assignAssetList.length; j++) {
+      // this.serialNumberAssignValue = this.assignAsset.serialNumber;
+      if (this.assignAsset.serialNumber === this.assignAssetList[j].serialNumber) {
+        if (this.assignAssetList[j].status === 'Assigned') {
+          this.invalidDate = true;
+          Swal.fire('', 'This Serial No. is already assigned', 'warning');
         }
+      }
+    }
+    if (!this.invalidDate) {
+      this.assignAsset.status = 'Assigned';
+      this.service.createAssignAsset(this.assignAsset).subscribe(res => {
+        this.assignAsset = res.body;
+        // eslint-disable-next-line no-console
+        console.log('--------------------------saved---------------------------------');
+        Swal.fire('', 'Successfully Saved', 'success');
+        // } else if (res.status === 208) {
+        //   this.assignAsset = new AssignAsset();
+        //   Swal.fire('Oops', 'This Serial No. is already assigned', 'error');
+        // }
       });
     }
+  }
+  private getAllAssignAsset() {
+    this.service.findAllAssignAsset().subscribe(data => {
+      this.assignAssetList = data.body;
+    });
   }
   private getEmpList() {
     this.service.findAllEmployee().subscribe(data => {

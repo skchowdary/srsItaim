@@ -15,7 +15,7 @@ export class AddAsset implements IAddAsset {
     public assetType?: String,
     public serialNumber?: String,
     public modelNumber?: String,
-    public manufacture?: String,
+    public manufacturer?: String,
     public procurementDate?: Moment
   ) {}
 }

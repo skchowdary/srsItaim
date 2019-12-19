@@ -20,16 +20,20 @@ export class AssetInventoryService {
     return this.http.post<AssignAsset>(this.resourceUrl + '/assignAsset/save', assign, { observe: 'response' });
   }
 
-  update(assign: AssignAsset): Observable<HttpResponse<AssignAsset>> {
-    return this.http.put<AssignAsset>(this.resourceUrl + '/assignAsset/update', assign, { observe: 'response' });
+  updateAssignAsset(assign: IAssignAsset): Observable<HttpResponse<IAssignAsset>> {
+    return this.http.put<IAssignAsset>(this.resourceUrl + '/assignAsset/update', assign, { observe: 'response' });
   }
 
   findAllAssignAsset(): Observable<HttpResponse<IAssignAsset[]>> {
     return this.http.get<IAssignAsset[]>(this.resourceUrl + '/assignAsset/getAll', { observe: 'response' });
   }
 
-  delete(id: string): Observable<HttpResponse<any>> {
-    return this.http.delete(`${'/assignAsset/delete'}/${id}`, { observe: 'response' });
+  findByStatus(status: String): Observable<HttpResponse<IAssignAsset[]>> {
+    return this.http.get<IAssignAsset[]>(this.resourceUrl + `${'/assignAsset/getallassigned'}/${status}`, { observe: 'response' });
+  }
+
+  deleteAssignAsset(id: any): Observable<HttpResponse<IAssignAsset>> {
+    return this.http.delete(this.resourceUrl + `${'/assignAsset/delete'}/${id}`, { observe: 'response' });
   }
 
   createAddAsset(asset: AddAsset): Observable<HttpResponse<AddAsset>> {
@@ -56,8 +60,8 @@ export class AssetInventoryService {
     return this.http.get<IClient[]>(this.resourceUrl + 'client/getAll', { observe: 'response' });
   }
 
-  updateClient(assign: IClient): Observable<HttpResponse<IClient>> {
-    return this.http.put<IClient>(this.resourceUrl + '/client/update', assign, { observe: 'response' });
+  updateClient(client: IClient): Observable<HttpResponse<IClient>> {
+    return this.http.put<IClient>(this.resourceUrl + '/client/update', client, { observe: 'response' });
   }
 
   deleteClient(id: any): Observable<HttpResponse<IClient>> {

@@ -6,6 +6,7 @@ export interface IAssignAsset {
   serialNumber?: String;
   assignTo?: String;
   assignmentDate?: Moment;
+  status?: String;
 }
 
 export class AssignAsset implements IAssignAsset {
@@ -14,6 +15,7 @@ export class AssignAsset implements IAssignAsset {
     public assetType?: String,
     public serialNumber?: String,
     public assignTo?: String,
-    public assignmentDate?: Moment
+    public assignmentDate?: Moment,
+    public status?: String
   ) {}
 }
