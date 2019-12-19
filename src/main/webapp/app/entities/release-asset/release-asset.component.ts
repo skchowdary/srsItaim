@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { IAddAsset } from '../add-asset/add-asset.model';
 import { AssetInventoryService } from '../assetinventory.service';
 import { IAssignAsset, AssignAsset } from '../assign-asset/assign-asset.model';
@@ -10,13 +10,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./release-asset.component.scss']
 })
 export class ReleaseAssetComponent implements OnInit {
+  @ViewChild('reason', { static: false }) reason: ElementRef;
   addAssetList: IAddAsset[] = [];
   assignAsset: IAssignAsset;
   assignAssetList: IAssignAsset[] = [];
   constructor(private service: AssetInventoryService) {}
 
   ngOnInit() {
-    // this.getAllAddAsset();
+    this.assignAsset = new AssignAsset();
     this.getAllAssignAsset();
   }
   // private getAllAddAsset() {
@@ -29,6 +30,7 @@ export class ReleaseAssetComponent implements OnInit {
       this.assignAssetList = data.body;
     });
   }
+
   releaseAssignedAsset(i: any) {
     this.assignAsset = new AssignAsset();
     this.assignAsset.id = this.assignAssetList[i].id;
@@ -37,10 +39,14 @@ export class ReleaseAssetComponent implements OnInit {
     this.assignAsset.assignTo = this.assignAssetList[i].assignTo;
     this.assignAsset.assignmentDate = this.assignAssetList[i].assignmentDate;
     this.assignAsset.status = 'Returned';
+    this.assignAsset.reason = this.reason.nativeElement.value;
+    //eslint-disable-next-line no-console
+    console.log('reason', this.reason.nativeElement.value);
     this.service.updateAssignAsset(this.assignAsset).subscribe(data => {
       this.assignAsset = data.body;
       if (data.status === 200) {
-        Swal.fire('', 'released Successfully', 'success');
+        Swal.fire('', 'Released Successfully', 'success');
+        this.getAllAssignAsset();
       }
     });
   }

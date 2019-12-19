@@ -34,7 +34,7 @@ export class AddClientComponent implements OnInit {
           Swal.fire('', 'Successfully Saved', 'success');
         } else if (res.status === 208) {
           this.addClient = new Client();
-          Swal.fire('Oops', 'name is already exist', 'error');
+          Swal.fire('Oops', 'client name is already exist', 'error');
         }
       });
     } else {
@@ -52,11 +52,7 @@ export class AddClientComponent implements OnInit {
   }
   deleteClient(id: any) {
     this.service.deleteClient(id).subscribe(value => {
-      // eslint-disable-next-line no-console
-      console.log('-----------deleted------------', value.status);
       if (value.status === 200) {
-        // eslint-disable-next-line no-console
-        console.log('-----------deleted------------');
         Swal.fire('', 'Deleted Successfully', 'success');
         this.findAllClients();
       }

@@ -11,5 +11,5 @@ public interface ClientService
 	public List<Client> getAllClients();
 	public Optional<Client> getClientById(int id);
 	public Client updateById(Client client);
-	public String DeleteClientById(int id);
+	public void deleteById(Integer id);
 }

@@ -40,6 +40,9 @@ public class AssignAsset implements Serializable
 	
 	@Column(name="status", nullable = false)
 	private String status;
+	
+	@Column(name="reason", nullable = false)
+	private String reason;
 
 	public int getId() {
 		return id;
@@ -89,13 +92,22 @@ public class AssignAsset implements Serializable
 		this.status = status;
 	}
 
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
 	@Override
 	public String toString() {
 		return "AssignAsset [id=" + id + ", assetType=" + assetType + ", serialNumber=" + serialNumber + ", assignTo="
-				+ assignTo + ", assignmentDate=" + assignmentDate + ", status=" + status + "]";
+				+ assignTo + ", assignmentDate=" + assignmentDate + ", status=" + status + ", reason=" + reason + "]";
 	}
 
 	public AssignAsset() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 }

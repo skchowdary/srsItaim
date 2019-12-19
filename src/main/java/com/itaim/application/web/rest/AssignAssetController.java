@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itaim.application.domain.AssignAsset;
-import com.itaim.application.domain.Client;
-import com.itaim.application.domain.Employee;
 import com.itaim.application.serviceImpl.AssignAssetServiceImpl;
 
 @RestController
@@ -24,12 +22,12 @@ public class AssignAssetController
 	AssignAssetServiceImpl service;
 
 	@RequestMapping(value = "/assignAsset/save", method = RequestMethod.POST)
-	public String save(@RequestBody AssignAsset asset)
-	{
-		service.saveAssignedAsset(asset);
-		return "Assets are Assigned and saved";
-	}
-//	public ResponseEntity<Boolean> save(@RequestBody AssignAsset assignAsset) {
+//	public String save(@RequestBody AssignAsset asset)
+//	{
+//		service.saveAssignedAsset(asset);
+//		return "Assets are Assigned and saved";
+//	}
+	public ResponseEntity<Boolean> save(@RequestBody AssignAsset assignAsset) {
 //	      if (assignAsset.getId() == 0) {
 //	      List<AssignAsset> assignAssetList = service.getAssignedAsset();
 //	      if (assignAssetList.stream().filter(data -> data.getSerialNumber().equals(assignAsset.getSerialNumber())).count() > 0) {
@@ -37,10 +35,9 @@ public class AssignAssetController
 //	      }
 //	      service.saveAssignedAsset(assignAsset);
 //	      } else {
-//	    	  service.saveAssignedAsset(assignAsset);
-//	      }
-//	        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
-//	 }
+	    	  service.saveAssignedAsset(assignAsset);
+	        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	 }
 
 	@RequestMapping(value = "/assignAsset/getAll", method = RequestMethod.GET)
 	public List<AssignAsset> getAssignedAsset()

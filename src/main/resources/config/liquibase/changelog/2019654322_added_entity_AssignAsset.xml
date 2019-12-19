@@ -35,6 +35,10 @@
 			<column name="status" type="varchar(20)">
 				<constraints nullable="false" />
 			</column>
+			
+			<column name="reason" type="varchar(200)">
+				<constraints nullable="false" />
+			</column>
 
 		</createTable>
 	</changeSet>

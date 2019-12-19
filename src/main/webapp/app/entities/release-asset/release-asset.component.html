@@ -17,7 +17,7 @@
                     <th><span>MANUFACTURER</span></th>
                     <th><span>PROCUREMENT DATE</span></th> -->
                     <th><span>ASSIGN TO</span></th>
-                    <th><span>ASSIGNMENT DATE</span></th>  
+                    <th><span>ASSIGNMENT DATE</span></th>
                     <th><span>REASON</span></th>
                     <th><span>ACTION</span></th>
                 </tr>
@@ -25,25 +25,25 @@
             <tbody>
                 <ng-container *ngFor="let assign of assignAssetList; let i = index">
                     <tr>
-                            <td>{{assign.assetType}}</td>
-                            <td>{{assign.serialNumber}}</td>
-                            <td>{{assign.assignTo}}</td>
-                            <td>{{assign.assignmentDate}}</td>
-                            <!-- <td>{{asset.procurementDate}}</td>
+                        <td>{{assign.assetType}}</td>
+                        <td>{{assign.serialNumber}}</td>
+                        <td>{{assign.assignTo}}</td>
+                        <td>{{assign.assignmentDate}}</td>
+                        <!-- <td>{{asset.procurementDate}}</td>
                             <td>{{assignAssetList[i].assignTo}}</td>
                             <td>{{assignAssetList[i].assignmentDate}}</td> -->
-                            <td class="text-center">
-                              <textarea class="form-control" rows="1" cols="3" name=reason [(ngModel)]="reason" required></textarea>
-                            </td>
-                            <td class="text-center">
-                                <div class="btn-group flex-btn-group-container">
-                                    <button type="button" class="btn btn-danger btn-sm"
-                                        (click)="releaseAssignedAsset(i)">
-                                        <fa-icon [icon]="'times'"></fa-icon>
-                                        <span class="d-none d-md-inline">Release</span>
-                                    </button>
-                                </div>
-                            </td>
+                        <td class="text-center">
+                            <textarea class="form-control" rows="1" cols="3" name=reason placeholder="Write reason.."
+                             #reason required></textarea>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group flex-btn-group-container">
+                                <button type="button" class="btn btn-danger btn-sm" (click)="releaseAssignedAsset(i)">
+                                    <fa-icon [icon]="'times'"></fa-icon>
+                                    <span class="d-none d-md-inline">Release</span>
+                                </button>
+                            </div>
+                        </td>
                     </tr>
                 </ng-container>
             </tbody>

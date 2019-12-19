@@ -37,9 +37,7 @@ public class ClientServiceImpl implements ClientService
 		return clientRepository.save(client);
 	}
 
-	public String DeleteClientById(int id) 
-	{
-		clientRepository.deleteById(id);
-		return "The client has been deleted successfully.";
+	public void deleteById(Integer id) {
+	  clientRepository.deleteById(id);	
 	}
 }

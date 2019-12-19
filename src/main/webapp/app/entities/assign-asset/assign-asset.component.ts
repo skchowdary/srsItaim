@@ -53,11 +53,12 @@ export class AssignAssetComponent implements OnInit {
     }
     if (!this.invalidDate) {
       this.assignAsset.status = 'Assigned';
+      this.assignAsset.reason = '';
       this.service.createAssignAsset(this.assignAsset).subscribe(res => {
-        this.assignAsset = res.body;
-        // eslint-disable-next-line no-console
-        console.log('--------------------------saved---------------------------------');
-        Swal.fire('', 'Successfully Saved', 'success');
+        if (res.status === 200) {
+          this.assignAsset = new AssignAsset();
+          Swal.fire('', 'Successfully Assigned', 'success');
+        }
         // } else if (res.status === 208) {
         //   this.assignAsset = new AssignAsset();
         //   Swal.fire('Oops', 'This Serial No. is already assigned', 'error');

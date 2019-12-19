@@ -67,10 +67,8 @@ public class ClientController
 	        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}
 	@RequestMapping(value = "client/{id}", method=RequestMethod.DELETE)
-	public String DeleteClientById(@PathVariable Integer id) 
+	public void deleteById(@PathVariable Integer id) 
 	{
-		clientServiceImpl.DeleteClientById(id);
-		return "The client has been deleted successfully.";
+		clientServiceImpl.deleteById(id);
 	}
-
 }
