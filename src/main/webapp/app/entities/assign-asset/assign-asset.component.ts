@@ -20,6 +20,7 @@ export class AssignAssetComponent implements OnInit {
   assignmentDateValue: any;
   serialNumberValue: any;
   invalidDate: boolean;
+  invalidSerialNo: boolean;
   constructor(private service: AssetInventoryService) {}
 
   ngOnInit() {
@@ -32,6 +33,8 @@ export class AssignAssetComponent implements OnInit {
 
   onSubmit() {
     this.invalidDate = false;
+    this.invalidSerialNo = false;
+
     for (let i = 0; i < this.serialNoLists.length; i++) {
       this.assignmentDateValue = this.assignAsset.assignmentDate;
       this.serialNumberValue = this.assignAsset.serialNumber;
@@ -42,27 +45,42 @@ export class AssignAssetComponent implements OnInit {
         }
       }
     }
-    for (let j = 0; j < this.assignAssetList.length; j++) {
-      // this.serialNumberAssignValue = this.assignAsset.serialNumber;
-      if (this.assignAsset.serialNumber === this.assignAssetList[j].serialNumber) {
-        if (this.assignAssetList[j].status === 'Assigned') {
-          this.invalidDate = true;
-          Swal.fire('', 'This Serial No. is already assigned', 'warning');
+    if (!this.invalidDate) {
+      for (let j = 0; j < this.assignAssetList.length; j++) {
+        if (this.assignAsset.serialNumber === this.assignAssetList[j].serialNumber) {
+          if (this.assignAssetList[j].status === 'Assigned') {
+            this.invalidSerialNo = true;
+            Swal.fire('', 'This Serial No. is already assigned', 'warning');
+          } else if (this.assignAssetList[j].status === 'Returned') {
+            //eslint-disable-next-line no-console
+            console.log('update data', this.assignAssetList[j].status);
+            this.invalidSerialNo = true;
+            this.assignAsset.id = this.assignAssetList[j].id;
+            this.assignAsset.status = 'Assigned';
+            this.assignAsset.reason = '';
+            this.service.updateAssignAsset(this.assignAsset).subscribe(res => {
+              if (res.status === 200) {
+                this.assignAsset = new AssignAsset();
+                this.getAllAssignAsset();
+                Swal.fire('', 'Successfully Assigned', 'success');
+              }
+            });
+          }
         }
       }
     }
-    if (!this.invalidDate) {
+
+    if (!this.invalidSerialNo) {
       this.assignAsset.status = 'Assigned';
       this.assignAsset.reason = '';
+      //eslint-disable-next-line no-console
+      console.log('create data', this.assignAsset.id);
       this.service.createAssignAsset(this.assignAsset).subscribe(res => {
         if (res.status === 200) {
           this.assignAsset = new AssignAsset();
+          this.getAllAssignAsset();
           Swal.fire('', 'Successfully Assigned', 'success');
         }
-        // } else if (res.status === 208) {
-        //   this.assignAsset = new AssignAsset();
-        //   Swal.fire('Oops', 'This Serial No. is already assigned', 'error');
-        // }
       });
     }
   }

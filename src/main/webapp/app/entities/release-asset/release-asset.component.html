@@ -33,8 +33,8 @@
                             <td>{{assignAssetList[i].assignTo}}</td>
                             <td>{{assignAssetList[i].assignmentDate}}</td> -->
                         <td class="text-center">
-                            <textarea class="form-control" rows="1" cols="3" name=reason placeholder="Write reason.."
-                             #reason required></textarea>
+                            <textarea class="form-control" [(ngModel)]="assign.reason" rows="1" cols="3" #reason(i) value="demo" placeholder="Write reason.."
+                            required></textarea>
                         </td>
                         <td class="text-center">
                             <div class="btn-group flex-btn-group-container">

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IAssetList } from './asset-type.model';
 import { IManufacturer } from './manufacturer.model';
+import { IViewAllAsset } from './view-asset.model';
 
 @Injectable({
   providedIn: 'root'
@@ -78,5 +79,9 @@ export class AssetInventoryService {
 
   findAllManufacturerList(): Observable<HttpResponse<IManufacturer[]>> {
     return this.http.get<IManufacturer[]>(this.resourceUrl + '/getAllManufacturers', { observe: 'response' });
+  }
+
+  findAllViewAsset(): Observable<HttpResponse<IViewAllAsset[]>> {
+    return this.http.get<IViewAllAsset[]>(this.resourceUrl + '/viewAllAsset/getAllTwoTables', { observe: 'response' });
   }
 }

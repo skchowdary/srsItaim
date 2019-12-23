@@ -1,4 +1,4 @@
-<button type="submit" routerLink="/dashboard" class="btn btn-info">
+<button type="submit" routerLink="/reports" class="btn btn-info">
   &nbsp;<span> Back</span>
   </button>
   <div class="header heading chartbox text-center">
@@ -18,20 +18,22 @@
         <th scope="col">Modal Number</th>
         <th scope="col">Manufacturer</th>
         <th scope="col">Procurement Date</th>
+        <th scope="col">Status</th>
         <th scope="col">Assigned To</th>
         <th scope="col">Assignment Date</th>
       </tr>
     </thead>
-    <tbody *ngIf="viewAddAsset.length"> 
-        <tr *ngFor="let asset of viewAddAsset;let i=index;">
+    <tbody *ngIf="listAllAssetReports.length"> 
+        <tr *ngFor="let asset of listAllAssetReports">
         <!-- <th scope="row">1</th> -->
         <td>{{asset.assetType}}</td>
         <td>{{asset.serialNumber}}</td>
         <td>{{asset.modelNumber}}</td>
         <td>{{asset.manufacturer}}</td>
         <td>{{asset.procurementDate}}</td>
-        <td>{{viewAssignAsset[i].assignTo}}</td>
-        <td>{{viewAssignAsset[i].assignmentDate}}</td>
+        <td>{{asset.status}}</td>
+        <td>{{asset.assignTo}}</td>
+        <td>{{asset.assignmentDate}}</td>
       </tr>
     </tbody>
     <!-- <ul *ngFor="let assetAnother of viewAssignAsset">

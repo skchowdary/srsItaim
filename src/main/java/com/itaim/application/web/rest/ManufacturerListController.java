@@ -46,7 +46,7 @@ public class ManufacturerListController {
 		
 	}
 
-	@RequestMapping(value = "/delete/{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value = "/deletemanufacturer/{id}", method=RequestMethod.DELETE)
 	public String DeleteManufacturerById(@PathVariable int id) 
 	{
 		manufacturerListServiceImpl.DeleteManufacturerById(id);
