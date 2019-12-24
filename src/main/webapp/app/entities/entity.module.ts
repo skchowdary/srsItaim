@@ -20,6 +20,7 @@ import { ViewClientComponent } from './view-client/view-client.component';
 import { VIEWCLIENT_ROUTE } from './view-client/view-client.route';
 import { VIEWASSET_ROUTE } from './view-asset/view-asset.route';
 import { ViewAssetComponent } from './view-asset/view-asset.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { ViewAssetComponent } from './view-asset/view-asset.component';
     AddClientComponent,
     ReportsComponent,
     ViewClientComponent,
-    ViewAssetComponent
+    ViewAssetComponent,
+    SearchPipe
   ]
 })
 export class ItaimApplicationEntityModule {}
