@@ -39,6 +39,10 @@
 			<column name="reason" type="varchar(200)">
 				<constraints nullable="false" />
 			</column>
+			
+			<column name="released_date" type="Date">
+				<constraints nullable="true" />
+			</column>
 
 		</createTable>
 	</changeSet>

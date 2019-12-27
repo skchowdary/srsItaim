@@ -29,15 +29,16 @@ public class AssignAssetController
 //		return "Assets are Assigned and saved";
 //	}
 	public ResponseEntity<Boolean> save(@RequestBody AssignAsset assignAsset) {
-	      if (assignAsset.getId() == 0) {
-	      List<AssignAsset> assignList = service.getAssignedAsset();
-	      if (assignList.stream().filter(data -> data.getSerialNumber().equals(assignAsset.getSerialNumber())).count() > 0) {
-	         return new ResponseEntity<Boolean>(false, HttpStatus.ALREADY_REPORTED);
-	      }
-	      service.saveAssignedAsset(assignAsset);
-	      } else {
-	    	  service.saveAssignedAsset(assignAsset);
-	      }
+//	      if (assignAsset.getId() == 0) {
+//	      List<AssignAsset> assignList = service.getAssignedAsset();
+//	      if (assignList.stream().filter(data -> data.getSerialNumber().equals(assignAsset.getSerialNumber())).count() > 0) {
+//	         return new ResponseEntity<Boolean>(false, HttpStatus.ALREADY_REPORTED);
+//	      }
+//	      service.saveAssignedAsset(assignAsset);
+//	      } else {
+//	    	  service.saveAssignedAsset(assignAsset);
+//	      }
+		    service.saveAssignedAsset(assignAsset);
 	        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	 }
 	@RequestMapping(value = "/assignAsset/getAll", method = RequestMethod.GET)
@@ -88,7 +89,7 @@ public class AssignAssetController
 		return "The assest has been deleted successfully.";
 	}
 	
-	@RequestMapping(value = "/assignAsset/getallassigned/{status}", method = RequestMethod.GET)
+	@RequestMapping(value = "/assignAsset/getallbystatus/{status}", method = RequestMethod.GET)
 	public List<AssignAsset> findByStatus(@PathVariable String status) {
 		return service.findByStatus(status);
 	}

@@ -43,6 +43,9 @@ public class AssignAsset implements Serializable
 	
 	@Column(name="reason", nullable = false)
 	private String reason;
+	
+	@Column(name="released_date", nullable = true)
+	private Date releasedDate;
 
 	public int getId() {
 		return id;
@@ -100,14 +103,22 @@ public class AssignAsset implements Serializable
 		this.reason = reason;
 	}
 
+	public Date getReleasedDate() {
+		return releasedDate;
+	}
+
+	public void setReleasedDate(Date releasedDate) {
+		this.releasedDate = releasedDate;
+	}
+
 	@Override
 	public String toString() {
 		return "AssignAsset [id=" + id + ", assetType=" + assetType + ", serialNumber=" + serialNumber + ", assignTo="
-				+ assignTo + ", assignmentDate=" + assignmentDate + ", status=" + status + ", reason=" + reason + "]";
+				+ assignTo + ", assignmentDate=" + assignmentDate + ", status=" + status + ", reason=" + reason
+				+ ", releasedDate=" + releasedDate + "]";
 	}
 
 	public AssignAsset() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 }

@@ -2,6 +2,7 @@ import { IClient, Client } from './add-client.model';
 import { Component, OnInit } from '@angular/core';
 import { AssetInventoryService } from '../assetinventory.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'jhi-add-client',
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2';
 export class AddClientComponent implements OnInit {
   addClient: IClient;
   clientsList: IClient[] = [];
-  constructor(private service: AssetInventoryService) {}
+  constructor(private service: AssetInventoryService, private route: Router) {}
 
   ngOnInit() {
     this.addClient = new Client();
@@ -32,6 +33,7 @@ export class AddClientComponent implements OnInit {
           this.addClient = new Client();
           this.findAllClients();
           Swal.fire('', 'Successfully Saved', 'success');
+          this.route.navigateByUrl('/dashboard');
         } else if (res.status === 208) {
           this.addClient = new Client();
           Swal.fire('Oops', 'client name is already exist', 'error');

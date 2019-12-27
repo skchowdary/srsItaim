@@ -3,6 +3,7 @@ import { IAddAsset } from '../add-asset/add-asset.model';
 import { AssetInventoryService } from '../assetinventory.service';
 import { IAssignAsset, AssignAsset } from '../assign-asset/assign-asset.model';
 import Swal from 'sweetalert2';
+import moment = require('moment');
 
 @Component({
   selector: 'jhi-release-asset',
@@ -22,13 +23,9 @@ export class ReleaseAssetComponent implements OnInit {
     this.assignAsset = new AssignAsset();
     this.getAllAssignAsset();
   }
-  // private getAllAddAsset() {
-  //   this.service.findAllAddAsset().subscribe(data => {
-  //     this.addAssetList = data.body;
-  //   });
-  // }
+
   private getAllAssignAsset() {
-    this.service.findByStatus('Assigned').subscribe(data => {
+    this.service.findByAssignStatus('Assigned').subscribe(data => {
       this.assignAssetList = data.body;
     });
   }
@@ -40,8 +37,11 @@ export class ReleaseAssetComponent implements OnInit {
     this.assignAsset.serialNumber = this.assignAssetList[i].serialNumber;
     this.assignAsset.assignTo = this.assignAssetList[i].assignTo;
     this.assignAsset.assignmentDate = this.assignAssetList[i].assignmentDate;
-    this.assignAsset.status = 'Returned';
-    this.assignAsset.reason = this.reason.nativeElement.value(i);
+    this.assignAsset.status = 'Released';
+    this.assignAsset.reason = this.reason.nativeElement.value;
+    this.assignAsset.releasedDate = moment();
+    //eslint-disable-next-line no-console
+    console.log('released date', this.assignAsset.releasedDate);
     // this.assignAsset.reason = this.assignAssetList[i].reason;
     //eslint-disable-next-line no-console
     console.log('value is : ' + this.reason.nativeElement.value);

@@ -1,0 +1,41 @@
+<div class="container-fluid mt--9 mb-5">
+    <div class="row align-items-center">
+        <button class="btn btn-primary" [routerLink]="['/dashboard']">Back</button>
+    </div>
+    <h2 class="text-center">REPORT OF RELEASED ASSETS</h2>
+    <div class="search">
+        <input type="text" [(ngModel)]="serialNumber" placeholder="Search by SerialNo." />
+    </div>
+    <div class="table-responsive text-center">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ASSET TYPE</span>
+                        <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
+                    </th>
+                    <th><span>SERIAL NO.</span>
+                        <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
+                    </th>
+                    <th><span>ASSIGNED TO</span></th>
+                    <th><span>ASSIGNMENT DATE</span></th>
+                    <th><span>STATUS</span></th>
+                    <th><span>REASON</span></th>
+                    <th><span>RELEASED DATE</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let assign of releasedAssetList | serialNumberFilter:serialNumber;let i = index">
+                    <tr>
+                        <td>{{assign.assetType}}</td>
+                        <td>{{assign.serialNumber}}</td>
+                        <td>{{assign.assignTo}}</td>
+                        <td>{{assign.assignmentDate}}</td>
+                        <td>{{assign.status}}</td>
+                        <td>{{assign.reason}}</td>
+                        <td>{{assign.releasedDate}}</td>             
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

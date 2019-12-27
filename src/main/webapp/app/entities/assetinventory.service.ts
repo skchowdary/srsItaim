@@ -29,8 +29,8 @@ export class AssetInventoryService {
     return this.http.get<IAssignAsset[]>(this.resourceUrl + '/assignAsset/getAll', { observe: 'response' });
   }
 
-  findByStatus(status: String): Observable<HttpResponse<IAssignAsset[]>> {
-    return this.http.get<IAssignAsset[]>(this.resourceUrl + `${'/assignAsset/getallassigned'}/${status}`, { observe: 'response' });
+  findByAssignStatus(status: String): Observable<HttpResponse<IAssignAsset[]>> {
+    return this.http.get<IAssignAsset[]>(this.resourceUrl + `${'/assignAsset/getallbystatus'}/${status}`, { observe: 'response' });
   }
 
   deleteAssignAsset(id: any): Observable<HttpResponse<IAssignAsset>> {

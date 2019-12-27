@@ -8,6 +8,7 @@ export interface IAssignAsset {
   assignmentDate?: Moment;
   status?: String;
   reason?: String;
+  releasedDate?: Moment;
 }
 
 export class AssignAsset implements IAssignAsset {
@@ -18,6 +19,7 @@ export class AssignAsset implements IAssignAsset {
     public assignTo?: String,
     public assignmentDate?: Moment,
     public status?: String,
-    public reason?: String
+    public reason?: String,
+    public releasedDate?: Moment
   ) {}
 }

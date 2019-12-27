@@ -2,6 +2,7 @@ import { IAddEmployee, AddEmployee } from './add-employee.model';
 import { AssetInventoryService } from './../assetinventory.service';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'jhi-add-employee',
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2';
 export class AddEmployeeComponent implements OnInit {
   addEmployee: IAddEmployee;
   employeeName: IAddEmployee[] = [];
-  constructor(private service: AssetInventoryService) {}
+  constructor(private service: AssetInventoryService, private route: Router) {}
 
   ngOnInit() {
     this.addEmployee = new AddEmployee();
@@ -22,6 +23,7 @@ export class AddEmployeeComponent implements OnInit {
         this.addEmployee = new AddEmployee();
         this.getEmpList();
         Swal.fire('', 'Successfully Saved', 'success');
+        this.route.navigateByUrl('/dashboard');
       } else if (res.status === 208) {
         this.addEmployee = new AddEmployee();
         Swal.fire('Oops', 'Email Id is already exist', 'error');

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { IAddAsset, AddAsset } from './add-asset.model';
 import Swal from 'sweetalert2';
 import { IManufacturer } from '../manufacturer.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'jhi-add-asset',
@@ -15,7 +16,7 @@ export class AddAssetComponent implements OnInit {
   assetLists: IAssetList[] = [];
   manufacturerList: IManufacturer[] = [];
 
-  constructor(private service: AssetInventoryService) {}
+  constructor(private service: AssetInventoryService, private route: Router) {}
 
   ngOnInit() {
     this.addAsset = new AddAsset();
@@ -28,6 +29,7 @@ export class AddAssetComponent implements OnInit {
       if (res.status === 200) {
         this.addAsset = new AddAsset();
         Swal.fire('', 'Successfully Saved', 'success');
+        this.route.navigateByUrl('/dashboard');
       } else if (res.status === 208) {
         this.addAsset = new AddAsset();
         Swal.fire('Oops', 'This Serial No. is already exist', 'error');

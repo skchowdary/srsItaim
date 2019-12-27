@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { AssetInventoryService } from '../assetinventory.service';
 import { IAssetList } from '../asset-type.model';
 import Swal from 'sweetalert2';
+import moment = require('moment');
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'jhi-assign-asset',
@@ -21,7 +23,7 @@ export class AssignAssetComponent implements OnInit {
   serialNumberValue: any;
   invalidDate: boolean;
   invalidSerialNo: boolean;
-  constructor(private service: AssetInventoryService) {}
+  constructor(private service: AssetInventoryService, private route: Router) {}
 
   ngOnInit() {
     this.assignAsset = new AssignAsset();
@@ -51,28 +53,29 @@ export class AssignAssetComponent implements OnInit {
           if (this.assignAssetList[j].status === 'Assigned') {
             this.invalidSerialNo = true;
             Swal.fire('', 'This Serial No. is already assigned', 'warning');
-          } else if (this.assignAssetList[j].status === 'Returned') {
-            //eslint-disable-next-line no-console
-            console.log('update data', this.assignAssetList[j].status);
-            this.invalidSerialNo = true;
-            this.assignAsset.id = this.assignAssetList[j].id;
-            this.assignAsset.status = 'Assigned';
-            this.assignAsset.reason = '';
-            this.service.updateAssignAsset(this.assignAsset).subscribe(res => {
-              if (res.status === 200) {
-                this.assignAsset = new AssignAsset();
-                this.getAllAssignAsset();
-                Swal.fire('', 'Successfully Assigned', 'success');
-              }
-            });
+            // } else if (this.assignAssetList[j].status === 'Returned') {
+            //   //eslint-disable-next-line no-console
+            //   console.log('update data', this.assignAssetList[j].status);
+            //   this.invalidSerialNo = true;
+            //   this.assignAsset.id = this.assignAssetList[j].id;
+            //   this.assignAsset.status = 'Assigned';
+            //   this.assignAsset.reason = '';
+            //   this.service.updateAssignAsset(this.assignAsset).subscribe(res => {
+            //     if (res.status === 200) {
+            //       this.assignAsset = new AssignAsset();
+            //       this.getAllAssignAsset();
+            //       Swal.fire('', 'Successfully Assigned', 'success');
+            //     }
+            //   });
           }
         }
       }
     }
 
-    if (!this.invalidSerialNo) {
+    if (!this.invalidSerialNo && !this.invalidDate) {
       this.assignAsset.status = 'Assigned';
       this.assignAsset.reason = '';
+      //   this.assignAsset.releasedDate = moment(undefined);
       //eslint-disable-next-line no-console
       console.log('create data', this.assignAsset.id);
       this.service.createAssignAsset(this.assignAsset).subscribe(res => {
@@ -80,6 +83,7 @@ export class AssignAssetComponent implements OnInit {
           this.assignAsset = new AssignAsset();
           this.getAllAssignAsset();
           Swal.fire('', 'Successfully Assigned', 'success');
+          this.route.navigateByUrl('/dashboard');
         }
       });
     }

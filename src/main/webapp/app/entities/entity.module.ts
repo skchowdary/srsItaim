@@ -21,6 +21,9 @@ import { VIEWCLIENT_ROUTE } from './view-client/view-client.route';
 import { VIEWASSET_ROUTE } from './view-asset/view-asset.route';
 import { ViewAssetComponent } from './view-asset/view-asset.component';
 import { SearchPipe } from './search.pipe';
+import { SerialnoSearch } from './view-releasedasset/serialnosearch.pipe';
+import { ViewReleasedassetComponent } from './view-releasedasset/view-releasedasset.component';
+import { VIEWRELEASEDASSET_ROUTE } from './view-releasedasset/view-releasedasset.route';
 
 @NgModule({
   imports: [
@@ -38,7 +41,8 @@ import { SearchPipe } from './search.pipe';
       REPORTS_ROUTE,
       RELEASEASSET_ROUTE,
       VIEWCLIENT_ROUTE,
-      VIEWASSET_ROUTE
+      VIEWASSET_ROUTE,
+      VIEWRELEASEDASSET_ROUTE
     ])
   ],
   declarations: [
@@ -50,7 +54,9 @@ import { SearchPipe } from './search.pipe';
     ReportsComponent,
     ViewClientComponent,
     ViewAssetComponent,
-    SearchPipe
+    SearchPipe,
+    SerialnoSearch,
+    ViewReleasedassetComponent
   ]
 })
 export class ItaimApplicationEntityModule {}
