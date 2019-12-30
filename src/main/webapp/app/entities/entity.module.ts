@@ -21,7 +21,6 @@ import { VIEWCLIENT_ROUTE } from './view-client/view-client.route';
 import { VIEWASSET_ROUTE } from './view-asset/view-asset.route';
 import { ViewAssetComponent } from './view-asset/view-asset.component';
 import { SearchPipe } from './search.pipe';
-import { SerialnoSearch } from './view-releasedasset/serialnosearch.pipe';
 import { ViewReleasedassetComponent } from './view-releasedasset/view-releasedasset.component';
 import { VIEWRELEASEDASSET_ROUTE } from './view-releasedasset/view-releasedasset.route';
 
@@ -55,7 +54,6 @@ import { VIEWRELEASEDASSET_ROUTE } from './view-releasedasset/view-releasedasset
     ViewClientComponent,
     ViewAssetComponent,
     SearchPipe,
-    SerialnoSearch,
     ViewReleasedassetComponent
   ]
 })

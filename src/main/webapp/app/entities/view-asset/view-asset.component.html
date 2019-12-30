@@ -1,15 +1,13 @@
 <button type="submit" routerLink="/reports" class="btn btn-info">
   &nbsp;<span> Back</span>
-  </button>
-  <div class="header heading chartbox text-center">
-  
-  <h2>REPORTS</h2>
-  
-  </div>
-
+</button>
+<h2 class="text-center">REPORT</h2>
+<div class="search">
+  <input type="text" [(ngModel)]="searchText" placeholder="Enter Serial No. or Name" />
+</div>
 
 <div class="table-responsive">
-<table class="table table-striped">
+  <table class="table table-striped">
     <thead>
       <tr>
         <!-- <th scope="col">#</th> -->
@@ -23,8 +21,8 @@
         <th scope="col">Assignment Date</th>
       </tr>
     </thead>
-    <tbody *ngIf="listAllAssetReports.length"> 
-        <tr *ngFor="let asset of listAllAssetReports">
+    <tbody *ngIf="listAllAssetReports.length">
+      <tr *ngFor="let asset of listAllAssetReports | nameFilter:searchText:['assignTo', 'serialNumber']">
         <!-- <th scope="row">1</th> -->
         <td>{{asset.assetType}}</td>
         <td>{{asset.serialNumber}}</td>

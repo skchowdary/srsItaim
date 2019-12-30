@@ -4,7 +4,7 @@
     </div>
     <h2 class="text-center">REPORT OF RELEASED ASSETS</h2>
     <div class="search">
-        <input type="text" [(ngModel)]="serialNumber" placeholder="Search by SerialNo." />
+        <input type="text" [(ngModel)]="searchText" placeholder="Enter Serial No. or Name" />
     </div>
     <div class="table-responsive text-center">
         <table class="table table-striped">
@@ -24,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                <ng-container *ngFor="let assign of releasedAssetList | serialNumberFilter:serialNumber;let i = index">
+                <ng-container *ngFor="let assign of releasedAssetList |  nameFilter:searchText:['assignTo', 'serialNumber'];let i = index">
                     <tr>
                         <td>{{assign.assetType}}</td>
                         <td>{{assign.serialNumber}}</td>

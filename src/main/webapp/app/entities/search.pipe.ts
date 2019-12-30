@@ -8,7 +8,9 @@ export class SearchPipe implements PipeTransform {
       return value;
     }
     return value.filter(val => {
-      const rVal = val.assignTo.toLocaleLowerCase().includes(args);
+      const rVal =
+        val.assignTo.toLocaleLowerCase().includes(String(args).toLowerCase()) ||
+        val.serialNumber.toLocaleLowerCase().includes(String(args).toLowerCase());
       return rVal;
     });
   }

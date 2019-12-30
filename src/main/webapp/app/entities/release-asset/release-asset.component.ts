@@ -30,27 +30,27 @@ export class ReleaseAssetComponent implements OnInit {
     });
   }
 
-  releaseAssignedAsset(i) {
-    this.assignAsset = new AssignAsset();
-    this.assignAsset.id = this.assignAssetList[i].id;
-    this.assignAsset.assetType = this.assignAssetList[i].assetType;
-    this.assignAsset.serialNumber = this.assignAssetList[i].serialNumber;
-    this.assignAsset.assignTo = this.assignAssetList[i].assignTo;
-    this.assignAsset.assignmentDate = this.assignAssetList[i].assignmentDate;
-    this.assignAsset.status = 'Released';
-    this.assignAsset.reason = this.reason.nativeElement.value;
-    this.assignAsset.releasedDate = moment();
+  releaseAssignedAsset(assign: IAssignAsset) {
+    // this.assignAsset = new AssignAsset();
+    // this.assignAsset.id = this.assignAssetList[i].id;
+    // this.assignAsset.assetType = this.assignAssetList[i].assetType;
+    // this.assignAsset.serialNumber = this.assignAssetList[i].serialNumber;
+    // this.assignAsset.assignTo = this.assignAssetList[i].assignTo;
+    // this.assignAsset.assignmentDate = this.assignAssetList[i].assignmentDate;
+    assign.status = 'Released';
+    // this.assignAsset.reason = this.reason.nativeElement.value;
+    assign.releasedDate = moment();
     //eslint-disable-next-line no-console
-    console.log('released date', this.assignAsset.releasedDate);
+    console.log('released date', assign.releasedDate);
     // this.assignAsset.reason = this.assignAssetList[i].reason;
     //eslint-disable-next-line no-console
-    console.log('value is : ' + this.reason.nativeElement.value);
+    // console.log('value is : ' + this.reason.nativeElement.value);
     //eslint-disable-next-line no-console
-    console.log('reason', this.assignAsset.reason);
-    if (this.assignAsset.reason === '') {
+    console.log('reason', assign.reason);
+    if (assign.reason === '') {
       Swal.fire('', 'mention the reason', 'error');
     } else {
-      this.service.updateAssignAsset(this.assignAsset).subscribe(data => {
+      this.service.updateAssignAsset(assign).subscribe(data => {
         this.assignAsset = data.body;
         if (data.status === 200) {
           Swal.fire('', 'Released Successfully', 'success');
