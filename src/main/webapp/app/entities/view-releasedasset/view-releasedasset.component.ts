@@ -8,11 +8,22 @@ import { AssetInventoryService } from '../assetinventory.service';
   styleUrls: ['./view-releasedasset.component.scss']
 })
 export class ViewReleasedassetComponent implements OnInit {
+  config: any;
   releasedAssetList: IAssignAsset[] = [];
-  constructor(private service: AssetInventoryService) {}
+  constructor(private service: AssetInventoryService) {
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: this.releasedAssetList.length
+    };
+  }
 
   ngOnInit() {
     this.getAllReleasedAsset();
+  }
+
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 
   private getAllReleasedAsset() {

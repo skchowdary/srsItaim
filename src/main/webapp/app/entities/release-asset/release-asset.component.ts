@@ -12,12 +12,17 @@ import moment = require('moment');
 })
 export class ReleaseAssetComponent implements OnInit {
   @ViewChild('reason', { static: false }) reason: ElementRef;
-  // reason : String;
-  addAssetList: IAddAsset[] = [];
+  config: any;
   assignAsset: IAssignAsset;
   assignAssetList: IAssignAsset[] = [];
   validReasonValue: boolean;
-  constructor(private service: AssetInventoryService) {}
+  constructor(private service: AssetInventoryService) {
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: this.assignAssetList.length
+    };
+  }
 
   ngOnInit() {
     this.assignAsset = new AssignAsset();
@@ -57,7 +62,9 @@ export class ReleaseAssetComponent implements OnInit {
           this.getAllAssignAsset();
         }
       });
-      // }
     }
+  }
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 }

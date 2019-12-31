@@ -11,30 +11,27 @@ import { IViewAllAsset } from '../view-asset.model';
 export class ViewAssetComponent implements OnInit {
   viewAssignAsset: IAssignAsset[] = [];
   viewAddAsset: IAddAsset[] = [];
-  status: any;
-  assignTo: any;
-  assignmentDate: any;
   listAllAssetReports: IViewAllAsset[] = [];
-  constructor(private service: AssetInventoryService) {}
+  config: any;
+  constructor(private service: AssetInventoryService) {
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: this.listAllAssetReports.length
+    };
+  }
 
   ngOnInit() {
-    // this.getAllAddAsset();
-    // this.getAllAssignAsset();
     this.getAllAssetReports();
   }
-  // private getAllAssignAsset() {
-  //   this.service.findAllAssignAsset().subscribe(data => {
-  //     this.viewAssignAsset = data.body;
-  //   });
-  // }
-  // private getAllAddAsset() {
-  //   this.service.findAllAddAsset().subscribe(data => {
-  //     this.viewAddAsset = data.body;
-  //   });
-  // }
+
   private getAllAssetReports() {
     this.service.findAllViewAsset().subscribe(data => {
       this.listAllAssetReports = data.body;
     });
+  }
+
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 }

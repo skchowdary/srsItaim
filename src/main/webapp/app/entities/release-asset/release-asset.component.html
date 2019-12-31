@@ -26,7 +26,8 @@
                 </tr>
             </thead>
             <tbody>
-                <ng-container *ngFor="let assign of assignAssetList | nameFilter:searchText:['assignTo', 'serialNumber'];let i = index">
+                <ng-container
+                    *ngFor="let assign of assignAssetList |  paginate: config | nameFilter:searchText:['assignTo', 'serialNumber'];let i = index">
                     <tr>
                         <td>{{assign.assetType}}</td>
                         <td>{{assign.serialNumber}}</td>
@@ -38,7 +39,8 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group flex-btn-group-container">
-                                <button type="button" class="btn btn-danger btn-sm" (click)="releaseAssignedAsset(assign)">
+                                <button type="button" class="btn btn-danger btn-sm"
+                                    (click)="releaseAssignedAsset(assign)">
                                     <fa-icon [icon]="'times'"></fa-icon>
                                     <span class="d-none d-md-inline">Release</span>
                                 </button>
@@ -48,5 +50,6 @@
                 </ng-container>
             </tbody>
         </table>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 </div>

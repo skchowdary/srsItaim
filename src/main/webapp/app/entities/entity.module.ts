@@ -23,6 +23,7 @@ import { ViewAssetComponent } from './view-asset/view-asset.component';
 import { SearchPipe } from './search.pipe';
 import { ViewReleasedassetComponent } from './view-releasedasset/view-releasedasset.component';
 import { VIEWRELEASEDASSET_ROUTE } from './view-releasedasset/view-releasedasset.route';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { VIEWRELEASEDASSET_ROUTE } from './view-releasedasset/view-releasedasset
     FormsModule,
     CommonModule,
     FontAwesomeModule,
+    NgxPaginationModule,
 
     RouterModule.forChild([
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */

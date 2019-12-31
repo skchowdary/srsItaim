@@ -1,6 +1,6 @@
 <div class="container-fluid mt--9 mb-5">
     <div class="row align-items-center">
-        <button class="btn btn-primary" [routerLink]="['/dashboard']">Back</button>
+        <button class="btn btn-primary" [routerLink]="['/reports']">Back</button>
     </div>
     <h2 class="text-center">REPORT OF RELEASED ASSETS</h2>
     <div class="search">
@@ -24,7 +24,8 @@
                 </tr>
             </thead>
             <tbody>
-                <ng-container *ngFor="let assign of releasedAssetList |  nameFilter:searchText:['assignTo', 'serialNumber'];let i = index">
+                <ng-container
+                    *ngFor="let assign of releasedAssetList |   paginate: config | nameFilter:searchText:['assignTo', 'serialNumber'];">
                     <tr>
                         <td>{{assign.assetType}}</td>
                         <td>{{assign.serialNumber}}</td>
@@ -32,10 +33,11 @@
                         <td>{{assign.assignmentDate}}</td>
                         <td>{{assign.status}}</td>
                         <td>{{assign.reason}}</td>
-                        <td>{{assign.releasedDate}}</td>             
+                        <td>{{assign.releasedDate}}</td>
                     </tr>
                 </ng-container>
             </tbody>
         </table>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 </div>
