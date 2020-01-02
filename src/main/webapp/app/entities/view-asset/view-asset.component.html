@@ -23,7 +23,7 @@
       </thead>
       <tbody *ngIf="listAllAssetReports.length">
         <tr
-          *ngFor="let asset of listAllAssetReports  | paginate: config | nameFilter:searchText:['assignTo', 'serialNumber']">
+          *ngFor="let asset of listAllAssetReports  | nameFilter:searchText:['assignTo', 'serialNumber'] | paginate: config">
           <!-- <th scope="row">1</th> -->
           <td>{{asset.assetType}}</td>
           <td>{{asset.serialNumber}}</td>
