@@ -53,7 +53,7 @@ export class AssignAssetComponent implements OnInit {
         if (this.assignAsset.serialNumber === this.assignAssetList[j].serialNumber) {
           if (this.assignAssetList[j].status === 'Assigned') {
             this.invalidSerialNo = true;
-            Swal.fire('', 'This Serial No. is already assigned', 'warning');
+            Swal.fire('', 'This Serial No. is already assigned', 'error');
             // } else if (this.assignAssetList[j].status === 'Returned') {
             //   //eslint-disable-next-line no-console
             //   console.log('update data', this.assignAssetList[j].status);

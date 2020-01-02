@@ -35,7 +35,9 @@ export class AddAssetComponent implements OnInit {
         form.resetForm();
       } else if (res.status === 208) {
         this.addAsset = new AddAsset();
-        Swal.fire('Oops', 'This Serial No. is already exist', 'error');
+        Swal.fire('', 'This Serial No. is already exist', 'error');
+        form.reset(form.value);
+        this.addAsset.serialNumber = '';
       }
     });
   }

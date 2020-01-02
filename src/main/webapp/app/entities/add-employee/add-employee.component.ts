@@ -29,7 +29,9 @@ export class AddEmployeeComponent implements OnInit {
         form.resetForm();
       } else if (res.status === 208) {
         this.addEmployee = new AddEmployee();
-        Swal.fire('Oops', 'Email Id is already exist', 'error');
+        Swal.fire('', 'Email Id is already exist', 'error');
+        form.reset(form.value);
+        this.addEmployee.email = '';
       }
     });
   }
