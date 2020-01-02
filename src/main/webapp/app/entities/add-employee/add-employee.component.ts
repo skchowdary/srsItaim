@@ -3,6 +3,7 @@ import { AssetInventoryService } from './../assetinventory.service';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'jhi-add-employee',
@@ -17,13 +18,15 @@ export class AddEmployeeComponent implements OnInit {
   ngOnInit() {
     this.addEmployee = new AddEmployee();
   }
-  onSave() {
+  onSave(form: NgForm) {
     this.service.createEmployee(this.addEmployee).subscribe(res => {
       if (res.status === 200) {
         this.addEmployee = new AddEmployee();
         this.getEmpList();
         Swal.fire('', 'Successfully Saved', 'success');
-        this.route.navigateByUrl('/dashboard');
+        //this.route.navigateByUrl('/dashboard');
+        form.form.markAsPristine();
+        form.resetForm();
       } else if (res.status === 208) {
         this.addEmployee = new AddEmployee();
         Swal.fire('Oops', 'Email Id is already exist', 'error');
@@ -35,10 +38,8 @@ export class AddEmployeeComponent implements OnInit {
       this.employeeName = data.body;
     });
   }
-  reset() {
-    this.addEmployee.name = '';
-    this.addEmployee.email = '';
-    this.addEmployee.phone = null;
-    this.addEmployee.address = '';
+  reset(form: NgForm) {
+    form.form.markAsPristine();
+    form.resetForm();
   }
 }

@@ -5,6 +5,7 @@ import { IAddAsset, AddAsset } from './add-asset.model';
 import Swal from 'sweetalert2';
 import { IManufacturer } from '../manufacturer.model';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'jhi-add-asset',
@@ -24,18 +25,21 @@ export class AddAssetComponent implements OnInit {
     this.getManufacturerList();
   }
 
-  save() {
+  save(form: NgForm) {
     this.service.createAddAsset(this.addAsset).subscribe(res => {
       if (res.status === 200) {
         this.addAsset = new AddAsset();
         Swal.fire('', 'Successfully Saved', 'success');
-        this.route.navigateByUrl('/dashboard');
+        //this.route.navigateByUrl('/dashboard');
+        form.form.markAsPristine();
+        form.resetForm();
       } else if (res.status === 208) {
         this.addAsset = new AddAsset();
         Swal.fire('Oops', 'This Serial No. is already exist', 'error');
       }
     });
   }
+
   private getAssetType() {
     this.service.findAllAssetType().subscribe(data => {
       this.assetLists = data.body;
@@ -46,11 +50,8 @@ export class AddAssetComponent implements OnInit {
       this.manufacturerList = data.body;
     });
   }
-  reset() {
-    this.addAsset.assetType = '';
-    this.addAsset.serialNumber = '';
-    this.addAsset.modelNumber = '';
-    this.addAsset.manufacturer = '';
-    this.addAsset.procurementDate = null;
+  reset(form: NgForm) {
+    form.form.markAsPristine();
+    form.resetForm();
   }
 }

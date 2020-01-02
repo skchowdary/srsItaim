@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AssetInventoryService } from '../assetinventory.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'jhi-add-client',
@@ -23,17 +24,20 @@ export class AddClientComponent implements OnInit {
       this.clientsList = res.body;
     });
   }
-  reset() {
-    this.addClient.clientName = '';
+  reset(form: NgForm) {
+    form.form.markAsPristine();
+    form.resetForm();
   }
-  onSubmit() {
+  onSubmit(form: NgForm) {
     if (this.addClient !== null && this.addClient.id == null) {
       this.service.createClient(this.addClient).subscribe(res => {
         if (res.status === 200) {
           this.addClient = new Client();
           this.findAllClients();
           Swal.fire('', 'Successfully Saved', 'success');
-          this.route.navigateByUrl('/dashboard');
+          //this.route.navigateByUrl('/dashboard');
+          form.form.markAsPristine();
+          form.resetForm();
         } else if (res.status === 208) {
           this.addClient = new Client();
           Swal.fire('Oops', 'client name is already exist', 'error');
@@ -45,6 +49,8 @@ export class AddClientComponent implements OnInit {
           this.addClient = new Client();
           this.findAllClients();
           Swal.fire('', 'Client Name Edited Successfully', 'success');
+          form.form.markAsPristine();
+          form.resetForm();
         } else if (value.status === 208) {
           this.addClient = new Client();
           Swal.fire('Oops', 'Fail! Client Name is Already Exist', 'error');

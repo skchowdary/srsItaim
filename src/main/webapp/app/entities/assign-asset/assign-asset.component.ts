@@ -7,6 +7,7 @@ import { IAssetList } from '../asset-type.model';
 import Swal from 'sweetalert2';
 import moment = require('moment');
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'jhi-assign-asset',
@@ -33,7 +34,7 @@ export class AssignAssetComponent implements OnInit {
     this.getAllAssignAsset();
   }
 
-  onSubmit() {
+  onSubmit(form: NgForm) {
     this.invalidDate = false;
     this.invalidSerialNo = false;
 
@@ -83,7 +84,9 @@ export class AssignAssetComponent implements OnInit {
           this.assignAsset = new AssignAsset();
           this.getAllAssignAsset();
           Swal.fire('', 'Successfully Assigned', 'success');
-          this.route.navigateByUrl('/dashboard');
+          //this.route.navigateByUrl('/dashboard');
+          form.form.markAsPristine();
+          form.resetForm();
         }
       });
     }
@@ -105,15 +108,11 @@ export class AssignAssetComponent implements OnInit {
   }
   private getAssetType() {
     this.service.findAllAssetType().subscribe(data => {
-      // eslint-disable-next-line no-console
-      console.log('response ' + data.body);
       this.assetLists = data.body;
     });
   }
-  reset() {
-    this.assignAsset.assetType = '';
-    this.assignAsset.serialNumber = '';
-    this.assignAsset.assignTo = '';
-    this.assignAsset.assignmentDate = null;
+  reset(form: NgForm) {
+    form.form.markAsPristine();
+    form.resetForm();
   }
 }
