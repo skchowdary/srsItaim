@@ -27,7 +27,7 @@
             </thead>
             <tbody>
                 <ng-container
-                    *ngFor="let assign of assignAssetList |  paginate: config | nameFilter:searchText:['assignTo', 'serialNumber'];let i = index">
+                    *ngFor="let assign of assignAssetList  | nameFilter:searchText:['assignTo', 'serialNumber'] |  paginate: config;let i = index">
                     <tr>
                         <td>{{assign.assetType}}</td>
                         <td>{{assign.serialNumber}}</td>
