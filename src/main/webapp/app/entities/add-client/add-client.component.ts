@@ -13,7 +13,14 @@ import { NgForm } from '@angular/forms';
 export class AddClientComponent implements OnInit {
   addClient: IClient;
   clientsList: IClient[] = [];
-  constructor(private service: AssetInventoryService, private route: Router) {}
+  config: any;
+  constructor(private service: AssetInventoryService, private route: Router) {
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: this.clientsList.length
+    };
+  }
 
   ngOnInit() {
     this.addClient = new Client();
@@ -71,5 +78,8 @@ export class AddClientComponent implements OnInit {
     this.service.findClientById(id).subscribe(value => {
       this.addClient = value.body;
     });
+  }
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
 }
