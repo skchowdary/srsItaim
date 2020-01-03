@@ -80,6 +80,7 @@ export class AddClientComponent implements OnInit {
     });
   }
   pageChanged(event) {
+    this.config.totalItems = this.clientsList.length;
     this.config.currentPage = event;
   }
 }

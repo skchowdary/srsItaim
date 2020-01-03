@@ -13,7 +13,7 @@ export class ViewClientComponent implements OnInit {
   config: any;
   constructor(private service: AssetInventoryService) {
     this.config = {
-      itemsPerPage: 5,
+      itemsPerPage: 10,
       currentPage: 1,
       totalItems: this.clientsList.length
     };
@@ -48,6 +48,7 @@ export class ViewClientComponent implements OnInit {
   //   });
   // }
   pageChanged(event) {
+    this.config.totalItems = this.clientsList.length;
     this.config.currentPage = event;
   }
 }
