@@ -32,6 +32,7 @@ export class ViewAssetComponent implements OnInit {
   }
 
   pageChanged(event) {
+    this.config.totalItems = this.listAllAssetReports.length;
     this.config.currentPage = event;
   }
 }
