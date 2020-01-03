@@ -23,6 +23,7 @@ export class ViewReleasedassetComponent implements OnInit {
   }
 
   pageChanged(event) {
+    this.config.totalItems = this.releasedAssetList.length;
     this.config.currentPage = event;
   }
 

@@ -32,7 +32,7 @@
                         <td>{{assign.assetType}}</td>
                         <td>{{assign.serialNumber}}</td>
                         <td>{{assign.assignTo}}</td>
-                        <td>{{assign.assignmentDate}}</td>
+                        <td>{{assign.assignmentDate | date: "dd-MM-yyyy"}}</td>
                         <td class="text-center">
                             <textarea class="form-control" [(ngModel)]="assign.reason" rows="1" cols="3" #reason
                                 value="demo" placeholder="Write reason.." required></textarea>

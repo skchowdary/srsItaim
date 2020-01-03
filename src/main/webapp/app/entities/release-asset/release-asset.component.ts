@@ -65,6 +65,7 @@ export class ReleaseAssetComponent implements OnInit {
     }
   }
   pageChanged(event) {
+    this.config.totalItems = this.assignAssetList.length;
     this.config.currentPage = event;
   }
 }

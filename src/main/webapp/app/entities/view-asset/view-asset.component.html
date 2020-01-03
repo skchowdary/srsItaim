@@ -29,10 +29,10 @@
           <td>{{asset.serialNumber}}</td>
           <td>{{asset.modelNumber}}</td>
           <td>{{asset.manufacturer}}</td>
-          <td>{{asset.procurementDate}}</td>
+          <td>{{asset.procurementDate | date: "dd-MM-yyyy"}}</td>
           <td>{{asset.status}}</td>
           <td>{{asset.assignTo}}</td>
-          <td>{{asset.assignmentDate}}</td>
+          <td>{{asset.assignmentDate | date: "dd-MM-yyyy"}}</td>
         </tr>
       </tbody>
     </table>

@@ -30,10 +30,10 @@
                         <td>{{assign.assetType}}</td>
                         <td>{{assign.serialNumber}}</td>
                         <td>{{assign.assignTo}}</td>
-                        <td>{{assign.assignmentDate}}</td>
+                        <td>{{assign.assignmentDate | date: "dd-MM-yyyy"}}</td>
                         <td>{{assign.status}}</td>
                         <td>{{assign.reason}}</td>
-                        <td>{{assign.releasedDate}}</td>
+                        <td>{{assign.releasedDate | date: "dd-MM-yyyy"}}</td>
                     </tr>
                 </ng-container>
             </tbody>
