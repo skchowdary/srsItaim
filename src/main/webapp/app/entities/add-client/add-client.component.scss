@@ -1,0 +1,18 @@
+input .form-control-search {
+  border: 2px solid #3e8acc !important;
+}
+
+.search {
+  max-width: 500px;
+  padding-bottom: 50px;
+  margin: auto;
+  float: left;
+}
+
+.form-control-client {
+  box-shadow: 0 10px 40px 0 #b0c1d9;
+  border: 2px solid #3e8acc !important;
+}
+.form-control-client::placeholder {
+  font-family: FontAwesome;
+}
