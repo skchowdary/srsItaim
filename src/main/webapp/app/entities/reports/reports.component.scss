@@ -44,8 +44,7 @@
 
 // .chartbox {
 //   text-align: center;
-  // background-color: ghostwhite;
-
+// background-color: ghostwhite;
 
 .heading {
   text-align: center;
@@ -80,33 +79,39 @@
 // tr:nth-child(even) {
 //   background: #eaeaea !important;
 // }
-.btn-primary {
+.button {
   font-variant: all-petite-caps;
+  text-transform: uppercase;
   font-size: 1.5em;
   width: 100%;
   align-content: center;
 
-// .errorMessage {
-//   display: flex;
-//   justify-content: center;
-//   font-size: 23px;
-//   font-weight: 400;
-//   font-family: monospace;
-//   margin-top: 40px;
-// }
+  // .errorMessage {
+  //   display: flex;
+  //   justify-content: center;
+  //   font-size: 23px;
+  //   font-weight: 400;
+  //   font-family: monospace;
+  //   margin-top: 40px;
+  // }
 
-// table {
-//   // table-layout: fixed;
-//   word-wrap: break-word;
-// }
+  // table {
+  //   // table-layout: fixed;
+  //   word-wrap: break-word;
+  // }
 
-// td {
-//   font-family: serif;
-//   text-overflow: ellipsis;
-//   overflow: hidden;
-//   width: 160px !important;
-//   height: 1.2em;
-//   white-space: nowrap;
+  // td {
+  //   font-family: serif;
+  //   text-overflow: ellipsis;
+  //   overflow: hidden;
+  //   width: 160px !important;
+  //   height: 1.2em;
+  //   white-space: nowrap;
+}
+
+button .btnStyle {
+  text-transform: lowercase;
+  width: auto;
 }
 
 @media (max-width: 425px) {
