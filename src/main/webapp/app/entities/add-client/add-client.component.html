@@ -28,6 +28,9 @@
                     </form>
                 </div>
             </div>
+            <div class="search">
+                <input type="text" [(ngModel)]="searchText" placeholder="Search by Client Name" />
+              </div>
             <div class="table-responsive text-center">
                 <table class="table table-striped">
                     <thead>
@@ -42,7 +45,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let client of clientsList">
+                        <tr *ngFor="let client of clientsList | clientFilter:searchText:['clientName'] | paginate: config ">
                             <td>{{client.id}}</td>
                             <td>{{client.clientName}}</td>
                             <td class="text-center">
@@ -62,6 +65,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <pagination-controls class="text-center" (pageChange)="pageChanged($event)"></pagination-controls>
             </div>
         </div>
     </div>

@@ -10,7 +10,14 @@ import Swal from 'sweetalert2';
 })
 export class ViewClientComponent implements OnInit {
   clientsList: IClient[] = [];
-  constructor(private service: AssetInventoryService) {}
+  config: any;
+  constructor(private service: AssetInventoryService) {
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: this.clientsList.length
+    };
+  }
 
   ngOnInit() {
     this.findAllClients();
@@ -40,4 +47,7 @@ export class ViewClientComponent implements OnInit {
   //     this.addClient = value.body;
   //   });
   // }
+  pageChanged(event) {
+    this.config.currentPage = event;
+  }
 }
