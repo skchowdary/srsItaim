@@ -38,6 +38,7 @@
                 </ng-container>
             </tbody>
         </table>
+        <p class="text-center" *ngIf="(releasedAssetList | nameFilter: searchText).length == 0">No matching records found</p>
         <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 </div>

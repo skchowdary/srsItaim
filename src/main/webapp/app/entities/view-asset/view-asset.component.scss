@@ -4,7 +4,7 @@ input {
 
 .search {
   max-width: 500px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   margin: auto;
   float: left;
 }
@@ -14,4 +14,9 @@ input {
 }
 .form-control::placeholder {
   font-family: FontAwesome;
+}
+p {
+  color: red;
+  font-weight: bold;
+  font-size: 18px;
 }

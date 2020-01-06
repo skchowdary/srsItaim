@@ -4,8 +4,8 @@
   </div>
   <h2 class="text-center">REPORT</h2>
   <div class="search">
-    <input class="form-control" type="text" [(ngModel)]="searchText" placeholder=" Search by Serial.No/Name" />
-    
+    <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search by Serial.No/Name" />
+
   </div>
   <div class="table-responsive">
     <table class="table table-striped">
@@ -37,6 +37,8 @@
         </tr>
       </tbody>
     </table>
+    <p class="text-center" *ngIf="(listAllAssetReports | nameFilter: searchText).length == 0">No matching records found
+    </p>
     <pagination-controls class="text-center" (pageChange)="pageChanged($event)"></pagination-controls>
   </div>
 </div>

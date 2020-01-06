@@ -39,6 +39,7 @@
                 </tr>
             </tbody>
         </table>
+        <p class="text-center" *ngIf="(clientsList | clientFilter: searchText).length == 0">No matching records found</p>
         <pagination-controls class="text-center" (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 </div>
