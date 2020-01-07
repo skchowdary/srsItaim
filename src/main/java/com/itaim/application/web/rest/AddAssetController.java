@@ -60,4 +60,8 @@ public class AddAssetController {
 	public String deleteAssestById(int id) {
 		return "The Assest Has Been Deleted Successfully.";
 	}
+	@RequestMapping(value = "/addAsset/getserialnum/{assetType}", method = RequestMethod.GET)
+	public List<String> findSerailNum(@PathVariable String assetType) {
+		return assetServiceImpl.findSerailNum(assetType);
+	}
 }

@@ -14,7 +14,7 @@
                             <label for="assetType">Asset Type:</label>
                             <select name="assetType" class="form-control" [(ngModel)]="assignAsset.assetType"
                                 #assetType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assetType.invalid }"
-                                required>
+                                (click)="getSerialNum(assignAsset.assetType)" required>
                                 <option *ngFor="let types of assetLists" [value]='types.assetName'>
                                     {{types.assetName}}
                                 </option>
@@ -28,8 +28,8 @@
                             <select name="serialNumber" class="form-control" [(ngModel)]="assignAsset.serialNumber"
                                 #serialNumber="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }" required>
-                                <option *ngFor="let serialNo of serialNoLists" [value]='serialNo.serialNumber'>
-                                    {{serialNo.serialNumber}}
+                                <option *ngFor="let serial of serialNumAssetType" [value]='serial'>
+                                    {{serial}}
                                 </option>
                                 <div *ngIf="f.submitted && serialNumber.invalid" class="invalid-feedback">
                                     <div *ngIf="serialNumber.errors.required">This field is required</div>

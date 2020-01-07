@@ -84,4 +84,8 @@ export class AssetInventoryService {
   findAllViewAsset(): Observable<HttpResponse<IViewAllAsset[]>> {
     return this.http.get<IViewAllAsset[]>(this.resourceUrl + '/viewAllAsset/getAllTwoTables', { observe: 'response' });
   }
+
+  findSerialNumByAssetType(assetType: String): Observable<HttpResponse<IAddAsset[]>> {
+    return this.http.get<IAddAsset[]>(this.resourceUrl + `/addAsset/getserialnum/${assetType}`, { observe: 'response' });
+  }
 }

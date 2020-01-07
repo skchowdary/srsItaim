@@ -24,6 +24,7 @@ export class AssignAssetComponent implements OnInit {
   serialNumberValue: any;
   invalidDate: boolean;
   invalidSerialNo: boolean;
+  serialNumAssetType: any;
   constructor(private service: AssetInventoryService, private route: Router) {}
 
   ngOnInit() {
@@ -33,7 +34,12 @@ export class AssignAssetComponent implements OnInit {
     this.getAssetType();
     this.getAllAssignAsset();
   }
-
+  getSerialNum(assetType: String) {
+    this.service.findSerialNumByAssetType(assetType).subscribe(res => {
+      console.log('serial Numbers', res.body);
+      this.serialNumAssetType = res.body;
+    });
+  }
   onSubmit(form: NgForm) {
     this.invalidDate = false;
     this.invalidSerialNo = false;

@@ -21,3 +21,10 @@ p {
   font-weight: bold;
   font-size: 18px;
 }
+.ng-invalid:not(form) {
+  border-left: 1px solid #ced4da;
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545 !important;
+}

@@ -11,5 +11,6 @@ public interface AddAssetService
 	public Optional<AddAsset> getAssestById(int id);
 	public AddAsset updateAssestById(AddAsset addAssests);
 	public String deleteAssestById(int id);
+    public List<String> findSerailNum(String assetType);
 }
  

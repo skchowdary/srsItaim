@@ -38,4 +38,9 @@ public class AddAssetServiceImpl implements AddAssetService
 	{
 		return "The Assests Has Been Deleted Successfully.";
 	}
+	
+	public List<String> findSerailNum(String assetType) {
+		return addAssetRepository.findSerailNum(assetType);
+	}
+
 }
