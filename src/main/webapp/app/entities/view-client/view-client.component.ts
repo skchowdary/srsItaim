@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class ViewClientComponent implements OnInit {
   clientsList: IClient[] = [];
   config: any;
+  element: any = [];
   constructor(private service: AssetInventoryService) {
     this.config = {
       itemsPerPage: 10,
