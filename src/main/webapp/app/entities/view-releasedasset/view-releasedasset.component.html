@@ -4,23 +4,33 @@
     </div>
     <h2 class="text-center">REPORT OF RELEASED ASSETS</h2>
     <div class="search">
-        <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search by Serial.No/Name" />
+        <input class="form-control" type="search" [(ngModel)]="searchText" placeholder="Search by Serial.No/Name" />
     </div>
     <div class="table-responsive text-center">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th><span>ASSET TYPE</span>
-                        <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
-                    </th>
-                    <th><span>SERIAL NO.</span>
-                        <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
-                    </th>
-                    <th><span>ASSIGNED TO</span></th>
-                    <th><span>ASSIGNMENT DATE</span></th>
-                    <th><span>STATUS</span></th>
-                    <th><span>REASON</span></th>
-                    <th><span>RELEASED DATE</span></th>
+                    <th [mdbTableSort]="releasedAssetList" sortBy="assetType"><span>Asset Type</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                      </th>
+                      <th [mdbTableSort]="releasedAssetList" sortBy="serialNumber"><span>Serial Number</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                      </th>
+                      <th [mdbTableSort]="releasedAssetList" sortBy="assignTo"><span>Assign To</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                      </th>
+                      <th [mdbTableSort]="releasedAssetList" sortBy="assignmentDate"><span>Assignment Date</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                      </th>
+                      <th [mdbTableSort]="releasedAssetList" sortBy="status"><span>Status</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                      </th>
+                      <th [mdbTableSort]="releasedAssetList" sortBy="reason"><span>Reason</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                      </th>
+                      <th [mdbTableSort]="releasedAssetList" sortBy="releasedDate"><span>Released Date</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                      </th>
                 </tr>
             </thead>
             <tbody>

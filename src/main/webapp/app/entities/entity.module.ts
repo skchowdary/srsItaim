@@ -25,6 +25,7 @@ import { SearchClientPipe } from './search-client.pipe';
 import { ViewReleasedassetComponent } from './view-releasedasset/view-releasedasset.component';
 import { VIEWRELEASEDASSET_ROUTE } from './view-releasedasset/view-releasedasset.route';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
       VIEWCLIENT_ROUTE,
       VIEWASSET_ROUTE,
       VIEWRELEASEDASSET_ROUTE
-    ])
+    ]),
+    MDBBootstrapModule.forRoot()
   ],
   declarations: [
     AddAssetComponent,

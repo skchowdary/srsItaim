@@ -4,25 +4,26 @@
     </div>
     <h2 class="text-center">RELEASE ASSET</h2>
     <div class="search">
-        <input class="form-control" type="text" [(ngModel)]="searchText" placeholder=" Search by Serial.No/Name"  />
+        <input class="form-control" type="search" [(ngModel)]="searchText" placeholder=" Search by Serial.No/Name" />
     </div>
     <div class="table-responsive text-center">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th><span>ASSET TYPE</span>
+                    <th><span>Asset Type</span>
                         <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
                     </th>
-                    <th><span>SERIAL NO.</span>
+                    <th><span>Serial Number</span>
                         <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
                     </th>
-                    <!-- <th><span>MODEL NO.</span></th>
-                    <th><span>MANUFACTURER</span></th>
-                    <th><span>PROCUREMENT DATE</span></th> -->
-                    <th><span>ASSIGN TO</span></th>
-                    <th><span>ASSIGNMENT DATE</span></th>
-                    <th><span>REASON</span></th>
-                    <th><span>ACTION</span></th>
+                    <th [mdbTableSort]="assignAssetList" sortBy="assignTo"><span>Assign To</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th [mdbTableSort]="assignAssetList" sortBy="assignmentDate"><span>Assignment Date</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th>Reason</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,7 +51,8 @@
                 </ng-container>
             </tbody>
         </table>
-        <p class="text-center" *ngIf="(assignAssetList | nameFilter: searchText).length == 0">No matching records found</p>
+        <p class="text-center" *ngIf="(assignAssetList | nameFilter: searchText).length == 0">No matching records found
+        </p>
         <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 </div>

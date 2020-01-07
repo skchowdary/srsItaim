@@ -29,23 +29,25 @@
                 </div>
             </div>
             <div class="search">
-                <input class="form-control-client" type="text" [(ngModel)]="searchText" placeholder="Search by Client Name" />
-              </div>
+                <input class="form-control-client" type="search" [(ngModel)]="searchText"
+                    placeholder="Search by Client Name" />
+            </div>
             <div class="table-responsive text-center">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th><span>ID</span>
-                                <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
+                            <th [mdbTableSort]="clientsList" sortBy="id"><span>Id</span>
+                                <fa-icon [icon]="'sort'"></fa-icon>
                             </th>
-                            <th><span>NAME</span>
-                                <!-- <fa-icon [icon]="'sort'"></fa-icon> -->
+                            <th [mdbTableSort]="clientsList" sortBy="clientName"><span>Client Name</span>
+                                <fa-icon [icon]="'sort'"></fa-icon>
                             </th>
-                            <th><span>Action</span></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let client of clientsList | clientFilter:searchText:['clientName'] | paginate: config ">
+                        <tr
+                            *ngFor="let client of clientsList | clientFilter:searchText:['clientName'] | paginate: config ">
                             <td>{{client.id}}</td>
                             <td>{{client.clientName}}</td>
                             <td class="text-center">
@@ -65,7 +67,8 @@
                         </tr>
                     </tbody>
                 </table>
-                <p class="text-center" *ngIf="(clientsList | clientFilter: searchText).length == 0">No matching records found</p>
+                <p class="text-center" *ngIf="(clientsList | clientFilter: searchText).length == 0">No matching records
+                    found</p>
                 <pagination-controls class="text-center" (pageChange)="pageChanged($event)"></pagination-controls>
             </div>
         </div>
