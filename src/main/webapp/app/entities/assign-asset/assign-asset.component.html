@@ -11,8 +11,7 @@
                     <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
                         <h2 class="text-center">ASSIGN ASSET</h2>
                         <div class="form-group">
-                            <label for="assetType">Asset Type:</label><span
-                            class="star"> *</span>
+                            <label for="assetType">Asset Type</label><span class="star"> *</span>
                             <select name="assetType" class="form-control" [(ngModel)]="assignAsset.assetType"
                                 #assetType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assetType.invalid }"
                                 (click)="getSerialNum(assignAsset.assetType)" required>
@@ -25,8 +24,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="serialNumber">Serial No</label><span
-                            class="star"> *</span>
+                            <label for="serialNumber">Serial No</label><span class="star"> *</span>
                             <select name="serialNumber" class="form-control" [(ngModel)]="assignAsset.serialNumber"
                                 #serialNumber="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }" required>
@@ -39,8 +37,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="assignTo">Assign To:</label><span
-                            class="star"> *</span>
+                            <label for="assignTo">Assign To</label><span class="star"> *</span>
                             <select name="assignTo" class="form-control" [(ngModel)]="assignAsset.assignTo"
                                 #assignTo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assignTo.invalid }"
                                 required>
@@ -53,10 +50,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="assignmentDate">Assignment Date</label><span
-                            class="star"> *</span>
+                            <label for="assignmentDate">Assignment Date</label><span class="star"> *</span>
                             <input class="form-control" name="assignmentDate" [(ngModel)]="assignAsset.assignmentDate"
-                                type="date" #assignmentDate="ngModel" placeholder="yyyy-mm-dd"
+                                type="date" #assignmentDate="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted && assignmentDate.invalid }" required>
                             <div *ngIf="f.submitted && assignmentDate.invalid" class="invalid-feedback">
                                 <div *ngIf="assignmentDate.errors.required">This field is required</div>
