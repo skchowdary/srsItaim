@@ -10,7 +10,7 @@ input {
 }
 
 .form-control {
-  box-shadow: 0 10px 40px 0 #b0c1d9;
+  // box-shadow: 0 10px 40px 0 #b0c1d9;
 }
 .form-control::placeholder {
   font-family: FontAwesome;
@@ -19,4 +19,8 @@ p {
   color: red;
   font-weight: bold;
   font-size: 18px;
+}
+
+.star {
+  color: red;
 }

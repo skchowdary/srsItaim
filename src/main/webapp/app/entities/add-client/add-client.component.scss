@@ -10,7 +10,6 @@ input .form-control-search {
 }
 
 .form-control-client {
-  box-shadow: 0 10px 40px 0 #b0c1d9;
   border: 2px solid #3e8acc !important;
 }
 .form-control-client::placeholder {
@@ -27,4 +26,7 @@ p {
 
 .form-control.is-invalid {
   border-color: #dc3545 !important;
+}
+.star {
+  color: red;
 }

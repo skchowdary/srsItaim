@@ -11,7 +11,8 @@
                     <form name="form" (ngSubmit)="f.form.valid && onSave(f)" #f="ngForm" novalidate>
                         <h2 class="text-center">ADD EMPLOYEE</h2>
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Name</label><span
+                            class="star"> *</span>
                             <input type="text" class="form-control" name="name" [(ngModel)]="addEmployee.name"
                                 #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
                                 pattern="^[A-Za-z -]+$" required />
@@ -22,7 +23,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Email</label> <span
+                            class="star"> *</span>                       
                             <input class="form-control" name="email" [(ngModel)]="addEmployee.email" type="email"
                                 #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" 
                                 required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" /> 
@@ -32,7 +34,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone No</label>
+                            <label for="phone">Phone No</label><span
+                            class="star"> *</span>
                             <input type="text" class="form-control" name="phone" [(ngModel)]="addEmployee.phone"
                                 pattern="[0-9]{10}" #phone="ngModel" maxlength="10"
                                 [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" required />
@@ -43,7 +46,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="address">Address</label><span
+                            class="star"> *</span>
                             <textarea class="form-control" name="address" rows="3" cols="5"
                                 [(ngModel)]="addEmployee.address" #address="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" style="resize: none"

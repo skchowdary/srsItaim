@@ -11,7 +11,8 @@
                     <form name="editForm" role="form" (ngSubmit)="f.form.valid && save(f)" #f="ngForm">
                         <h2 class="text-center">ADD ASSET</h2>
                         <div class="form-group">
-                            <label class="form-control-label">Asset Type</label>
+                            <label class="form-control-label">Asset Type</label><span
+                            class="star"> *</span>
                             <select name="assetType" class="form-control" [(ngModel)]="addAsset.assetType"
                                 #assetType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && assetType.invalid }"
                                 required>
@@ -24,7 +25,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="serialNumber">Serial Number</label>
+                            <label for="serialNumber">Serial Number</label><span
+                            class="star"> *</span>
                             <input type="text" class="form-control" name="serialNumber"
                                 [(ngModel)]="addAsset.serialNumber" #serialNumber="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }"
@@ -36,7 +38,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="modelNumber">Model Number</label>
+                            <label for="modelNumber">Model Number</label><span
+                            class="star"> *</span>
                             <input type="text" class="form-control" name="modelNumber"
                                 [(ngModel)]="addAsset.modelNumber" #modelNumber="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted && modelNumber.invalid }" required />
@@ -45,7 +48,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="manufacturer">Manufacturer</label>
+                            <label for="manufacturer">Manufacturer</label><span
+                            class="star"> *</span>
                             <select name="manufacturer" class="form-control" [(ngModel)]="addAsset.manufacturer"
                                 #manufacturer="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted && manufacturer.invalid }" required>
@@ -58,7 +62,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="procurementDate">Procurement Date</label>
+                            <label for="procurementDate">Procurement Date</label><span
+                            class="star"> *</span>
                             <input type="date" class="form-control" name="procurementDate"
                                 [(ngModel)]="addAsset.procurementDate" #procurementDate="ngModel"
                                 [ngClass]="{ 'is-invalid': f.submitted && procurementDate.invalid }" required />
