@@ -18,10 +18,10 @@
                                 <option *ngFor="let types of assetLists" [value]='types.assetName'>
                                     {{types.assetName}}
                                 </option>
-                                <div *ngIf="f.submitted && assetType.invalid" class="invalid-feedback">
-                                    <div *ngIf="assetType.errors.required">This field is required</div>
-                                </div>
                             </select>
+                            <div *ngIf="f.submitted && assetType.invalid" class="invalid-feedback">
+                                <div *ngIf="assetType.errors.required">This field is required</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="serialNumber">Serial No</label>
@@ -31,10 +31,10 @@
                                 <option *ngFor="let serial of serialNumAssetType" [value]='serial'>
                                     {{serial}}
                                 </option>
-                                <div *ngIf="f.submitted && serialNumber.invalid" class="invalid-feedback">
-                                    <div *ngIf="serialNumber.errors.required">This field is required</div>
-                                </div>
                             </select>
+                            <div *ngIf="f.submitted && serialNumber.invalid" class="invalid-feedback">
+                                <div *ngIf="serialNumber.errors.required">This field is required</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="assignTo">Assign To:</label>
@@ -44,10 +44,10 @@
                                 <option *ngFor="let emp of this.employeeName" [value]='emp.name'>
                                     {{emp.name}}
                                 </option>
-                                <div *ngIf="f.submitted && assignTo.invalid" class="invalid-feedback">
-                                    <div *ngIf="assignTo.errors.required">This field is required</div>
-                                </div>
                             </select>
+                            <div *ngIf="f.submitted && assignTo.invalid" class="invalid-feedback">
+                                <div *ngIf="assignTo.errors.required">This field is required</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="assignmentDate">Assignment Date</label>

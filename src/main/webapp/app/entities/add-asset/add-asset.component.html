@@ -18,19 +18,21 @@
                                 <option *ngFor="let types of assetLists" [value]='types.assetName'>
                                     {{types.assetName}}
                                 </option>
-                                <div *ngIf="f.submitted && assetType.invalid" class="invalid-feedback">
-                                    <div *ngIf="assetType.errors.required">This field is required</div>
-                                </div>
                             </select>
+                            <div *ngIf="f.submitted && assetType.invalid" class="invalid-feedback">
+                                <div *ngIf="assetType.errors.required">This field is required</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="serialNumber">Serial Number</label>
                             <input type="text" class="form-control" name="serialNumber"
                                 [(ngModel)]="addAsset.serialNumber" #serialNumber="ngModel"
-                                [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }" pattern='[a-zA-Z0-9-]+' maxlength="30" required />
+                                [ngClass]="{ 'is-invalid': f.submitted && serialNumber.invalid }"
+                                pattern='[a-zA-Z0-9-]+' maxlength="30" required />
                             <div *ngIf="f.submitted && serialNumber.invalid" class="invalid-feedback">
                                 <div *ngIf="serialNumber.errors.required">This field is required</div>
-                                <div *ngIf="serialNumber.errors.pattern">Serial no. shouldn't contain special character</div>
+                                <div *ngIf="serialNumber.errors.pattern">Serial no. shouldn't contain special character
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -50,10 +52,10 @@
                                 <option *ngFor="let names of manufacturerList" [value]='names.manufacturerName'>
                                     {{names.manufacturerName}}
                                 </option>
-                                <div *ngIf="f.submitted && manufacturer.invalid" class="invalid-feedback">
-                                    <div *ngIf="manufacturer.errors.required">This field is required</div>
-                                </div>
                             </select>
+                            <div *ngIf="f.submitted && manufacturer.invalid" class="invalid-feedback">
+                                <div *ngIf="manufacturer.errors.required">This field is required</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="procurementDate">Procurement Date</label>
