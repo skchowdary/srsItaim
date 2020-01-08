@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 
 import { ViewReleasedassetComponent } from './view-releasedasset.component';
+import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 
 export const VIEWRELEASEDASSET_ROUTE: Route = {
   path: 'view-releasedasset',
@@ -8,5 +9,6 @@ export const VIEWRELEASEDASSET_ROUTE: Route = {
   data: {
     authorities: [],
     pageTitle: 'View releasedasset'
-  }
+  },
+  canActivate: [UserRouteAccessService]
 };

@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 
 import { AddClientComponent } from './add-client.component';
+import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 
 export const ADDCLIENT_ROUTE: Route = {
   path: 'addclient',
@@ -8,5 +9,6 @@ export const ADDCLIENT_ROUTE: Route = {
   data: {
     authorities: [],
     pageTitle: 'Add Client'
-  }
+  },
+  canActivate: [UserRouteAccessService]
 };
