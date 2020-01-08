@@ -3,6 +3,8 @@ package com.itaim.application.web.rest;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,37 +21,26 @@ import com.itaim.application.serviceImpl.AssignAssetServiceImpl;
 @RestController
 public class AssignAssetController 
 {
+	private static final Logger Logger = LoggerFactory.getLogger(AssignAssetController .class);
 	@Autowired
 	AssignAssetServiceImpl service;
-
-	@RequestMapping(value = "/assignAsset/save", method = RequestMethod.POST)
-//	public String save(@RequestBody AssignAsset asset)
-//	{
-//		service.saveAssignedAsset(asset);
-//		return "Assets are Assigned and saved";
-//	}
-	public ResponseEntity<Boolean> save(@RequestBody AssignAsset assignAsset) {
-//	      if (assignAsset.getId() == 0) {
-//	      List<AssignAsset> assignList = service.getAssignedAsset();
-//	      if (assignList.stream().filter(data -> data.getSerialNumber().equals(assignAsset.getSerialNumber())).count() > 0) {
-//	         return new ResponseEntity<Boolean>(false, HttpStatus.ALREADY_REPORTED);
-//	      }
-//	      service.saveAssignedAsset(assignAsset);
-//	      } else {
-//	    	  service.saveAssignedAsset(assignAsset);
-//	      }
+    @RequestMapping(value = "/assignAsset/save", method = RequestMethod.POST)
+    public ResponseEntity<Boolean> save(@RequestBody AssignAsset assignAsset) {
+	 Logger.info("request for save data in assignAsset", assignAsset);
 		    service.saveAssignedAsset(assignAsset);
 	        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	 }
 	@RequestMapping(value = "/assignAsset/getAll", method = RequestMethod.GET)
 	public List<AssignAsset> getAssignedAsset()
 	{
+    	Logger.info("request for fetch data from assignAsset");
 		return service.getAssignedAsset();
 	}
 
 	@RequestMapping(value = "/assignAsset/{id}", method = RequestMethod.GET)
 	public AssignAsset getAssetById(@PathVariable int id) throws Exception 
 	{
+		Logger.warn("request for fetch data from assignAsset by id",id);
 		Optional<AssignAsset> asset = service.getAssetById(id);
 		if (!asset.isPresent())
 			throw new Exception("Could not find asset with id- " + id);
@@ -67,6 +58,7 @@ public class AssignAssetController
 //		return service.updateAssignAsset(updasset);
 //	}
 	public ResponseEntity<Boolean> update(@RequestBody AssignAsset assign) {
+		Logger.info("request to saveall data in assignAsset",assign);
 		         service.saveAssignedAsset(assign);
 	        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}
@@ -74,6 +66,7 @@ public class AssignAssetController
 	@RequestMapping(value = "/assignAsset/delete/{id}", method = RequestMethod.DELETE)
 	public String deleteAssetById(@PathVariable int id) throws Exception 
 	{
+		Logger.debug("request to delete Data from assignAsset by id");
 		Optional<AssignAsset> asset = service.getAssetById(id);
 		if (!asset.isPresent())
 			throw new Exception("Could not find asset with id- " + id);
@@ -85,12 +78,14 @@ public class AssignAssetController
 	@RequestMapping(value = "/asset/deleteall", method = RequestMethod.DELETE)
 	public String deleteAll() 
 	{
+		Logger.debug("request to deleteall data from assignAsset by id");
 		service.deleteAllAsset();
 		return "The assest has been deleted successfully.";
 	}
 	
 	@RequestMapping(value = "/assignAsset/getallbystatus/{status}", method = RequestMethod.GET)
 	public List<AssignAsset> findByStatus(@PathVariable String status) {
+		Logger.info("request to getall data from assignAsset by status",status);
 		return service.findByStatus(status);
 	}
 }

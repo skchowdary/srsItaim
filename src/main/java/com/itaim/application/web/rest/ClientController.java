@@ -3,6 +3,8 @@ package com.itaim.application.web.rest;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,8 @@ import com.itaim.application.serviceImpl.ClientServiceImpl;
 @RestController
 public class ClientController 
 {
+	private static final Logger Logger = LoggerFactory.getLogger( ClientController.class);
+
 	@Autowired
 	ClientServiceImpl clientServiceImpl;
 	
@@ -28,6 +32,7 @@ public class ClientController
 //		return "The client has been saved successfully.";
 //	}
 	public ResponseEntity<Boolean> save(@RequestBody Client client) {
+		Logger.info("request for save data in client",client);
 	      if (client.getId() == 0) {
 	      List<Client> clientList = clientServiceImpl.getAllClients();
 	      if (clientList.stream().filter(data -> data.getClientName().equals(client.getClientName())).count()>0) {
@@ -42,11 +47,13 @@ public class ClientController
 	@RequestMapping(value = "client/getAll", method=RequestMethod.GET)
 	public List<Client> getAllClients() 
 	{
+		Logger.info("request for fetch data from client");
 		return clientServiceImpl.getAllClients();
 	}
 	@RequestMapping(value = "client/{id}", method=RequestMethod.GET)
 	public Optional<Client> getClientById(@PathVariable Integer id)
 	{
+		Logger.info("request for fetch data from client bt id", id);
 		return clientServiceImpl.getClientById(id);
 	}
 	@RequestMapping(value = "client/update", method=RequestMethod.PUT)
@@ -55,6 +62,7 @@ public class ClientController
 //		return clientServiceImpl.updateById(client);
 //	}
 	public ResponseEntity<Boolean> update(@RequestBody Client client) {
+		Logger.info("request for save data from client", client);
 	      if (client.getId() != 0) {
 	      List<Client> clientList = clientServiceImpl.getAllClients();
 	      if (clientList.stream().filter(data -> data.getClientName().equals(client.getClientName())).count()>0) {
@@ -69,6 +77,7 @@ public class ClientController
 	@RequestMapping(value = "client/{id}", method=RequestMethod.DELETE)
 	public void deleteById(@PathVariable Integer id) 
 	{
+		Logger.debug("request for delete data from client by id", id);
 		clientServiceImpl.deleteById(id);
 	}
 }
