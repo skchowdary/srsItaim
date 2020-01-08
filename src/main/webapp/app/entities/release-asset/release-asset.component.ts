@@ -56,21 +56,22 @@ export class ReleaseAssetComponent implements OnInit {
       Swal.fire('', 'mention the reason', 'error');
     } else {
       Swal.fire({
-        title: 'Are you sure?',
-        text: 'You want to release',
-        icon: 'warning',
+        title: 'Are you sure you want to release?',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes'
+      }).then(result => {
+        if (result.value) {
+          this.service.updateAssignAsset(assign).subscribe(data => {
+            this.assignAsset = data.body;
+            if (data.status === 200) {
+              Swal.fire('', 'Released Successfully', 'success');
+              this.getAllAssignAsset();
+            }
+          });
+        }
       });
-      // this.service.updateAssignAsset(assign).subscribe(data => {
-      //   this.assignAsset = data.body;
-      //   if (data.status === 200) {
-      //     Swal.fire('', 'Released Successfully', 'success');
-      //     this.getAllAssignAsset();
-      //   }
-      // });
     }
   }
   pageChanged(event) {
