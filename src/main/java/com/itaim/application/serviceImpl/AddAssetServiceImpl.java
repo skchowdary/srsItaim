@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.itaim.application.domain.AddAsset;
 import com.itaim.application.repository.AddAssetRepository;
 import com.itaim.application.service.AddAssetService;
 
 @Service
+@Transactional
 public class AddAssetServiceImpl implements AddAssetService
 {
 	@Autowired

@@ -5,12 +5,14 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.itaim.application.domain.Client;
 import com.itaim.application.repository.ClientRepository;
 import com.itaim.application.service.ClientService;
 
 @Service
+@Transactional
 public class ClientServiceImpl implements ClientService 
 {
 	@Autowired

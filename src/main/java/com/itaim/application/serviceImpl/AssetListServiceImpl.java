@@ -5,12 +5,14 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.itaim.application.domain.AssetList;
 import com.itaim.application.repository.AssetListRepository;
 import com.itaim.application.service.AssetListService;
 
 @Service
+@Transactional
 public class AssetListServiceImpl implements AssetListService {
 
 	@Autowired
